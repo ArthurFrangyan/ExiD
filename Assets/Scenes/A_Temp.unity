@@ -501,6 +501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualizer: {fileID: 1810265263}
+  steps: 10
 --- !u!1 &1383147869
 GameObject:
   m_ObjectHideFlags: 0

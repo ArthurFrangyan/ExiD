@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UnityEngine;
 
-namespace Assets.Scripts.Generator
+namespace Assets.Scripts.Generator.Library
 {
-    public interface IGenerator
+    public class Node
     {
-        public short[,] Generate(int diameter);
+        public HashSet<Room> Nodes;
     }
 }

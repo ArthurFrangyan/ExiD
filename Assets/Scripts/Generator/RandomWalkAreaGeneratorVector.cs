@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace Assets.Scripts.Generator
 {
-    public class RandomWalkAreaGeneratorVector : IGenerator
+    public class RandomWalkAreaGeneratorVector
     {
 
         public HashSet<Vector2Int> Generate(int diameter)

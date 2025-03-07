@@ -9,6 +9,7 @@ namespace Assets.Scripts.Data
 {
     static class Info
     {
-        public static IGenerator RoomAreaGenerator = new RandomWalkAreaGeneratorVector();
+        public static IGenerator RoomAreaGenerator = new RandomWalkAreaGenerator();
+        public static int CellSize = 4;
     }
 }
