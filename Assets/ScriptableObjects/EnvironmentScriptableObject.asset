@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e33a1d870c016d48901c588332ac7da, type: 3}
+  m_Name: EnvironmentScriptableObject
+  m_EditorClassIdentifier: 
+  Ceils:
+  - {fileID: 4836003092659949449, guid: 0afa728817404e94ca74e0bd5011f35f, type: 3}
+  - {fileID: 202363282577080567, guid: 0c47a3cfe81fe0041b9e2031f3da31f8, type: 3}
+  - {fileID: 5977541356339677134, guid: 93ba57be6ec385c49b1eac37949413ad, type: 3}
+  - {fileID: 7704920021881401147, guid: de3a90d79b29c7e459cbcfeb52628976, type: 3}
+  - {fileID: 6595809848460505279, guid: 0baf16001a499644a8b6f9b108df6a46, type: 3}
+  - {fileID: 4073910898699567671, guid: f048064a761865944a68c34affaf393a, type: 3}
+  - {fileID: 3291315368418319473, guid: 170d45f6c14bd7a489f4845439a470c8, type: 3}
+  - {fileID: 3603370212055970433, guid: 7382237b14911554681a3077c8134801, type: 3}
+  - {fileID: 7227728148056014484, guid: ff16aaf09a7549f4d9607794c06218d7, type: 3}
+  - {fileID: 2085483236277443843, guid: 6e5fea4cb159dd64c947edb828e543f5, type: 3}
+  Floors:
+  - {fileID: 2465558204961391594, guid: fb6906b1c2f35ef4ea3e72386891fa6d, type: 3}
+  - {fileID: 6223992774509759224, guid: ac8d3b7a8a502784a89c3a5267b2980c, type: 3}
+  - {fileID: 4482946180143716550, guid: a1e585f671dc6d3409e9d406cbaa909d, type: 3}
+  - {fileID: 7944741365386133005, guid: fa029c3c18878334895305e9b983b0ce, type: 3}
+  - {fileID: 7565470960100870290, guid: b90ecb51603d4504d90b4ff68dcfd797, type: 3}
+  - {fileID: 8195590998567634832, guid: f7a102a011f119347b1c9da5a0f99de5, type: 3}
+  - {fileID: 8640640156553673445, guid: bf80403294db22a4fb0bff5173aa0237, type: 3}
+  - {fileID: 1641407363864041182, guid: f53fc68a7f80a474e951750cdd0f4dd8, type: 3}
+  - {fileID: 3991052844307826703, guid: 5082758f264ae684c995a29d607a4544, type: 3}
+  - {fileID: 2505945004055207556, guid: da573a6e1271f104588e69f9874af2e5, type: 3}
+  - {fileID: 4830428558600354985, guid: dd7c115e8b854b143969a56c827e0ffd, type: 3}
+  - {fileID: 3675276699159304883, guid: d39f4c4ba82b1f64883937195fbd00bd, type: 3}
+  - {fileID: 7291140933045088949, guid: 58b15257fd8ec2e44800afb8a4292e84, type: 3}
+  - {fileID: 2677685301289469738, guid: 983032862417fad4d8d24390deaa3e43, type: 3}
+  - {fileID: 2500761594848502476, guid: f6992d7c0e69a1c4b81e0df4a2179dfb, type: 3}
+  - {fileID: 5750367968992305642, guid: 86a529b380614c345baada08fbe25225, type: 3}
+  Columns: []
+  BrokenFloors: []
+  FloorDusts: []
+  Walls:
+  - {fileID: 807191524193933985, guid: 49df19edbd42a7b49b0184ca00802320, type: 3}
+  - {fileID: 8572922797488651701, guid: db0da18a8ba47f4408896f1c1fe09983, type: 3}
+  - {fileID: 2792643281681563086, guid: 4d304a64e66aa0049a9364f2de9fda61, type: 3}
+  - {fileID: 221348025844440506, guid: 909509147ff04994ebe682f2e26827bf, type: 3}
+  - {fileID: 5816860596999818874, guid: 76c122b3b9ccc61499fe97f7a2b6cc35, type: 3}
+  - {fileID: 6803230371115622488, guid: 0f76caa924570fc41a0f920331ff50c9, type: 3}
+  - {fileID: 3375958587525607220, guid: bcc4b0a1ce31a11499b76454e9c65490, type: 3}
+  - {fileID: 7548742976176027929, guid: 39eb5765c217a6d42a29b559b83275d0, type: 3}
+  - {fileID: 2010036105653172118, guid: 1614c0036fef691438f30fb568d5ff26, type: 3}
+  - {fileID: 7345337621081969857, guid: dd3677254705464469d95c5f6f653c1d, type: 3}
+  - {fileID: 3147792291395399194, guid: 8ee2d975826d40a41a28cb5265a0a1cd, type: 3}
+  - {fileID: 720248710051442400, guid: 82735d9159b5e364fbe8b023ecacc178, type: 3}
+  - {fileID: 1529782665405259765, guid: 783d4fec2ab7dad4b89be2a5daaa0e6e, type: 3}
+  - {fileID: 3546588896882862908, guid: b5db296deea59d6488499708f66122a2, type: 3}
+  - {fileID: 3131415116631980197, guid: ce160c60d62a3c44c9809f731f81852e, type: 3}
+  - {fileID: 8423415417313894549, guid: eabc17e1f8f869f4d9b28627d11a1b62, type: 3}
+  - {fileID: 4714229227882609262, guid: f84ca4f171b8bb948a6fb66b6c8b6c22, type: 3}
+  - {fileID: 6431006789346984134, guid: df079494c45efc04699f34f2f3db574c, type: 3}
+  - {fileID: 4723964155086997177, guid: bba72b3d02d1db948bf58b9f21c5d3c7, type: 3}
+  - {fileID: 750652627428774376, guid: 4bc29555f91fc804b8f1cb0c05c253dc, type: 3}
+  - {fileID: 1823061388517985000, guid: ae56ddcdd14e3744ea131a45f9185cf8, type: 3}
+  - {fileID: 9122394061368700602, guid: 3fe3b5b8fe30ac04aa0450b5a9b083cf, type: 3}
+  - {fileID: 8722751693285436886, guid: 0a7bc55ae38d0e54da06d81d62c0e94b, type: 3}
+  - {fileID: 2993083828172790984, guid: a69fd4c71da5e9c4e8c4ce12ce21482e, type: 3}
+  Stairs: []
+  Bricks: []
+  BrickCracks: []
+  StoneCorners: []
+  WodenBoardsAndBars: []
