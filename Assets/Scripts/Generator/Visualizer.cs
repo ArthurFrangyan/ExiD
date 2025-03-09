@@ -7,50 +7,66 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 public class Visualizer : MonoBehaviour
 {
     [SerializeField]
-    private EnvironmentScriptableObject floorTile;
+    private EnvironmentScriptableObject environments;
     [SerializeField]
     private GameObject parentObject;
 
-    private List<GameObject> floors = new List<GameObject>();
-    public void PaintFloorTiles(Room room)
-    {
-        PaintTiles(room.Cells, floorTile);
-    }
+    private List<GameObject> instanceCells = new List<GameObject>();
 
-    private void PaintTiles(short[,] cells, EnvironmentScriptableObject tile)
+    public void PaintRooms(RoomGraph rooms)
     {
-        for (int i = 0; i < cells.GetLength(0); i++)
+        for (int i = 0; i < rooms._roomGraph.Count; i++)
         {
-            for (int j = 0; j < cells.GetLength(1); j++)
+            for (int j = 0; j < rooms._roomGraph[i].Count; j++)
             {
-                PaintSingleTile(cells[i,j], new Vector3(j,0,i), tile);
+                PaintRoom(rooms._roomGraph[i][j]);
             }
         }
     }
 
-    private void PaintSingleTile(short cell ,Vector3 position, EnvironmentScriptableObject tile)
+    public void PaintRoom(Room room)
     {
-        switch (cell)
+        PaintTiles(room.Cells, room.Position);
+    }
+    private void PaintTiles(short[,] cells, Vector3 center)
+    {
+        int cellSize = Info.CellSize;
+        for (int i = 0; i < cells.GetLength(0); i++)
         {
-            case 1:
-                var floor = Instantiate(tile.Floors[0]);
-                floor.transform.position = Info.CellSize * position;
-                floors.Add(floor);
-                break;
+            for (int j = 0; j < cells.GetLength(1); j++)
+            {
+                switch (cells[i, j])
+                {
+                    case 1:
+                        PaintSingleTile(
+                            cells[i, j], 
+                            new Vector3(j*cellSize, 0, i*cellSize) + center * cellSize, 
+                            environments.Floors[Random.Range(0, environments.Floors.Length - 1)]);
+                        break;
+                }
+            }
         }
+    }
+
+    private void PaintSingleTile(short cell ,Vector3 position, GameObject tile)
+    {
+        var floor = Instantiate(tile, parentObject.transform);
+        floor.transform.position = position;
+        instanceCells.Add(floor);
     }
     public void Clean()
     {
-        if (floors is null)
+        if (instanceCells is null)
             return;
-        foreach (GameObject floor in floors)
+        foreach (GameObject instanceCell in instanceCells)
         {
-            Destroy(floor.gameObject);
+            Destroy(instanceCell.gameObject);
         }
-        floors.Clear();
+        instanceCells.Clear();
     }
 }

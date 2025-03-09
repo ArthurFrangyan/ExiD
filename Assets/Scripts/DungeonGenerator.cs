@@ -7,12 +7,20 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField]
     private Visualizer visualizer;
     [SerializeField]
-    private int steps;
+    private ushort minRows;
+    [SerializeField]
+    private ushort maxRows;
+    [SerializeField]
+    private ushort cols;
+    [SerializeField]
+    private ushort minDiameter;
+    [SerializeField]
+    private ushort maxDiameter;
 
     public void RunProceduralGeneration()
     {
         visualizer.Clean();
-        Room room = new Room(steps);
-        visualizer.PaintFloorTiles(room);
+        RoomGraph rooms = new RoomGraph(minRows, maxRows, cols, minDiameter, maxDiameter);
+        visualizer.PaintRooms(rooms);
     }
 }

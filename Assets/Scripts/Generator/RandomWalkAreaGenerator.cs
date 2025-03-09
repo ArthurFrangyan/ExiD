@@ -30,7 +30,7 @@ namespace Assets.Scripts.Generator
 
             var MaxSteps = GetCountOfCells(roomArea, diameter);
             var MinSteps = MaxSteps*2/3;
-            var steps = Random.Range(MinSteps, MaxSteps) - 1;
+            var steps = Random.Range(MinSteps, MaxSteps);
 
             roomArea[position.y, position.x] = 1;
             roomAreaPaths.Add(position);

@@ -501,7 +501,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualizer: {fileID: 1810265263}
-  steps: 10
+  minRows: 3
+  maxRows: 4
+  cols: 4
+  minDiameter: 4
+  maxDiameter: 10
 --- !u!1 &1383147869
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,7 +836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c60ab481e7ebadc49bd5b244e8666065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floorTile: {fileID: 11400000, guid: 965654bcd15809449aaf8de896c7652c, type: 2}
+  environments: {fileID: 11400000, guid: 965654bcd15809449aaf8de896c7652c, type: 2}
   parentObject: {fileID: 840223483}
 --- !u!4 &1810265264
 Transform:
