@@ -28,11 +28,18 @@ public class Visualizer : MonoBehaviour
             }
         }
     }
-
     public void PaintRoom(Room room)
     {
         PaintTiles(room.Cells, room.Position);
     }
+    public void PaintPaths(HashSet<Vector3Int> pathPositions)
+    {
+        foreach (var position in pathPositions)
+        {
+            PaintSingleTile(position * Info.CellSize, environments.Floors[Random.Range(0, environments.Floors.Length - 1)]);
+        }
+    }
+
     private void PaintTiles(short[,] cells, Vector3 center)
     {
         int cellSize = Info.CellSize;
@@ -44,7 +51,6 @@ public class Visualizer : MonoBehaviour
                 {
                     case 1:
                         PaintSingleTile(
-                            cells[i, j], 
                             new Vector3(j*cellSize, 0, i*cellSize) + center * cellSize, 
                             environments.Floors[Random.Range(0, environments.Floors.Length - 1)]);
                         break;
@@ -53,7 +59,7 @@ public class Visualizer : MonoBehaviour
         }
     }
 
-    private void PaintSingleTile(short cell ,Vector3 position, GameObject tile)
+    private void PaintSingleTile(Vector3 position, GameObject tile)
     {
         var floor = Instantiate(tile, parentObject.transform);
         floor.transform.position = position;

@@ -1,5 +1,7 @@
 ﻿using Assets.Scripts.Data;
+using Assets.Scripts.Generator.Library;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +12,7 @@ using Random = UnityEngine.Random;
 
 namespace Assets.Scripts.Generator
 {
-    public class RoomGraph
+    public class RoomGraph : IList<List<Room>>
     {
         public List<List<Room>> _roomGraph;
         private ushort _minRows;
@@ -18,6 +20,12 @@ namespace Assets.Scripts.Generator
         private ushort _cols;
         private ushort _minDiameter;
         private ushort _maxDiameter;
+
+        public int Count => _roomGraph.Count;
+
+        public bool IsReadOnly => false;
+
+        public List<Room> this[int index] { get => _roomGraph[index]; set => _roomGraph[index] = value; }
 
         public RoomGraph(ushort rows, ushort cols, ushort diameter, float diameterCoefficient = 0.5f, float rowsCoefficient = 0.5f)
         {
@@ -45,12 +53,21 @@ namespace Assets.Scripts.Generator
         }
         public void Generate()
         {
+            GenerateRooms();
+            MakeConnections();
+            SetCenters();
+            ForceAlgorithm();
+        }
+        private void GenerateRooms()
+        {
             _roomGraph = new List<List<Room>>();
             for (ushort i = 0; i < _cols; i++)
             {
                 GenerateNewLineOfRooms((ushort)Random.Range(_minRows, _maxRows + 1));
             }
-
+        }
+        private void MakeConnections()
+        {
             List<Room> previous = _roomGraph[0];
             for (ushort i = 1; i < _cols; i++)
             {
@@ -60,7 +77,6 @@ namespace Assets.Scripts.Generator
 
                 previous = current;
             }
-            SetCenters(_roomGraph);
         }
         private void MakeConnectionBetweenLines(List<Room> left, List<Room> right)
         {
@@ -106,7 +122,7 @@ namespace Assets.Scripts.Generator
             _roomGraph.Add(new List<Room>());
             Room previous = new Room(Random.Range(_minDiameter, _maxDiameter + 1));
             _roomGraph[col].Add(previous);
-            previous.Nodes = new HashSet<Room>();
+            previous.Nodes = new HashSet<Node>();
 
             for (int j = 1; j < rows; j++)
             {
@@ -114,7 +130,7 @@ namespace Assets.Scripts.Generator
                 _roomGraph[col].Add(current);
 
                 previous.Nodes.Add(current);
-                current.Nodes = new HashSet<Room>
+                current.Nodes = new HashSet<Node>
                 {
                     previous
                 };
@@ -122,20 +138,20 @@ namespace Assets.Scripts.Generator
                 previous = current;
             }
         }
-        private void SetCenters(List<List<Room>> roomGraph)
+        private void SetCenters()
         {
-            if (roomGraph is null)
-                throw new ArgumentException($"{nameof(roomGraph)} is null");
+            if (_roomGraph is null)
+                throw new ArgumentException($"{nameof(_roomGraph)} is null");
 
             int maxLineLength = MaxLineLength();
 
             int posCol = 0;
             SetCentersForLine(0, posCol, StartPositionForLine(0, maxLineLength));
-            for (int col = 1; col < roomGraph.Count; col++)
+            for (int col = 1; col < _roomGraph.Count; col++)
             {
                 posCol += CalculateDistanceBetweenRooms(
-                    MaxDiameterInLine(roomGraph[col - 1]), 
-                    MaxDiameterInLine(roomGraph[col]));
+                    MaxDiameterInLine(_roomGraph[col - 1]), 
+                    MaxDiameterInLine(_roomGraph[col]));
 
                 SetCentersForLine(col, posCol, StartPositionForLine(col, maxLineLength));
             }
@@ -194,5 +210,61 @@ namespace Assets.Scripts.Generator
             }
             return Diameter;
         }
+
+        private void ForceAlgorithm()
+        {
+
+        }
+        #region IList
+        public void Add(List<Room> item)
+        {
+            _roomGraph.Add(item);
+        }
+
+        public void Clear()
+        {
+            _roomGraph.Clear();
+        }
+
+        public bool Contains(List<Room> item)
+        {
+            return _roomGraph.Contains(item);
+        }
+
+        public void CopyTo(List<Room>[] array, int arrayIndex)
+        {
+            _roomGraph.CopyTo(array, arrayIndex);
+        }
+
+        public bool Remove(List<Room> item)
+        {
+            return _roomGraph.Remove(item);
+        }
+
+        public IEnumerator<List<Room>> GetEnumerator()
+        {
+            return _roomGraph.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public int IndexOf(List<Room> item)
+        {
+            return _roomGraph.IndexOf(item);
+        }
+
+        public void Insert(int index, List<Room> item)
+        {
+            _roomGraph.Insert(index, item);
+        }
+
+        public void RemoveAt(int index)
+        {
+            _roomGraph.RemoveAt(index);
+        }
+        #endregion
     }
 }

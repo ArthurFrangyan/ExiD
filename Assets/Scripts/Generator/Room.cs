@@ -20,7 +20,6 @@ namespace Assets.Scripts.Generator
             set => position = value - new Vector3Int((Diameter - 1) / 2, 0, (Diameter - 1) / 2);
         }
         public int Diameter { get; set; }
-        public int DiameterStandard { get; set; }
 
         public short[,] Cells;
 

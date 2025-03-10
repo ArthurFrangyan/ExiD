@@ -8,6 +8,6 @@ namespace Assets.Scripts.Generator.Library
 {
     public class Node
     {
-        public HashSet<Room> Nodes;
+        public HashSet<Node> Nodes;
     }
 }

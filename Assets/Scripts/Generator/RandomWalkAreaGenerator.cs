@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Generator.Library;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,9 +42,7 @@ namespace Assets.Scripts.Generator
         }
         private bool IsInValidRange(Vector2Int position, int diameter)
         {
-            double xDelta = position.x - center.x;
-            double yDelta = position.y - center.y;
-            return Math.Sqrt(xDelta * xDelta + yDelta * yDelta) < diameter / 2f;
+            return Sphere.IsInValidRange(new Vector3Int(position.x, 0, position.y), new Vector3(center.x, 0, center.y), diameter);
         }
         private int GetCountOfCells(short[,] room, int diameter)
         {

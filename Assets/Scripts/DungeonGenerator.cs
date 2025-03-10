@@ -22,5 +22,7 @@ public class DungeonGenerator : MonoBehaviour
         visualizer.Clean();
         RoomGraph rooms = new RoomGraph(minRows, maxRows, cols, minDiameter, maxDiameter);
         visualizer.PaintRooms(rooms);
+        PathTreeGenerator tree = new PathTreeGenerator(rooms);
+        visualizer.PaintPaths(tree.PathPositions);
     }
 }
