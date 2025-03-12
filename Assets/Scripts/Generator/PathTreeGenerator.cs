@@ -134,7 +134,7 @@ namespace Assets.Scripts.Generator
 
             while (!IsInTheRoom(position, second))
             {
-                if (!IsInTheRoom(position, first) && !IsInThePath(position))
+                if (CanAddPath(position))
                 {
                     _pathsPositions.Add(position);
                 }
@@ -142,6 +142,21 @@ namespace Assets.Scripts.Generator
                 direction = GetRandomDirection(destinyDirection, direction);
                 position += direction;
             }
+        }
+        private bool CanAddPath(Vector3Int position)
+        {
+            if (IsInThePath(position))
+            {
+                return false;
+            }
+            foreach (Room room in _paths)
+            {
+                if (IsInTheRoom(position, room))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
         private Vector3Int Vector3ToVector3Int(Vector3 vector)
         {

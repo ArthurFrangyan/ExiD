@@ -14,7 +14,7 @@ namespace Assets.Scripts.Generator
 {
     public class RoomGraph : IList<List<Room>>
     {
-        public List<List<Room>> _roomGraph;
+        private List<List<Room>> _roomGraph;
         private ushort _minRows;
         private ushort _maxRows;
         private ushort _cols;

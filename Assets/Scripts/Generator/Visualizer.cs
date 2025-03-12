@@ -20,11 +20,11 @@ public class Visualizer : MonoBehaviour
 
     public void PaintRooms(RoomGraph rooms)
     {
-        for (int i = 0; i < rooms._roomGraph.Count; i++)
+        for (int i = 0; i < rooms.Count; i++)
         {
-            for (int j = 0; j < rooms._roomGraph[i].Count; j++)
+            for (int j = 0; j < rooms[i].Count; j++)
             {
-                PaintRoom(rooms._roomGraph[i][j]);
+                PaintRoom(rooms[i][j]);
             }
         }
     }
