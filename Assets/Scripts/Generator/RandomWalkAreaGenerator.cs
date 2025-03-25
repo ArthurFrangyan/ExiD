@@ -1,85 +1,77 @@
-﻿using Assets.Scripts.Generator.Library;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Unity.VisualScripting;
+using Generator.Library;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
-namespace Assets.Scripts.Generator
+namespace Generator
 {
-    public class RandomWalkAreaGenerator : IGenerator
+    public class RandomWalkAreaGenerator : IAreaGenerator
     {
-        private Vector2 center;
-        private int countOfCells;
-        public short[,] Generate(int diameter)
+        private MatrixHelper _matrixHelper;
+
+        public Block[,] Generate(int diameter)
         {
+            _matrixHelper = new MatrixHelper(diameter);
             if (diameter<1)
-            {
                 throw new ArgumentException();
-            }
+            
+            var roomArea = new Block[diameter, diameter];
 
+            var startPosition = new Vector2Int((int)_matrixHelper.Center.x, (int)_matrixHelper.Center.y);
 
-            center = new Vector2((diameter - 1) / 2f, (diameter - 1) / 2f);
-            var roomArea = new short[diameter, diameter];
-            var roomAreaPaths = new HashSet<Vector2Int>();
+            var steps = GetSteps(roomArea);
 
-            var position = new Vector2Int(diameter/2, diameter/2);
-
-            var MaxSteps = GetCountOfCells(roomArea, diameter);
-            var MinSteps = MaxSteps*2/3;
-            var steps = Random.Range(MinSteps, MaxSteps);
-
-            roomArea[position.y, position.x] = 1;
-            roomAreaPaths.Add(position);
-            countOfCells = 0;
-            while(SimpleRandomWalk(position,roomAreaPaths, roomArea, steps, diameter));
+            roomArea[startPosition.y, startPosition.x].HasFloor = true;
+            GenerateAreaByFloorCount(roomArea, steps, startPosition);
 
             return roomArea;
         }
-        private bool IsInValidRange(Vector2Int position, int diameter)
-        {
-            return Sphere.IsInValidRange(new Vector3Int(position.x, 0, position.y), new Vector3(center.x, 0, center.y), diameter);
-        }
-        private int GetCountOfCells(short[,] room, int diameter)
-        {
-            int countOfCells = 0;
-            for (int i = 0; i < room.GetLength(0); i++)
-            {
-                for (int j = 0; j < room.GetLength(1); j++)
-                {
-                    if (IsInValidRange(new Vector2Int(j,i), diameter))
-                    {
-                        countOfCells++;
-                    }
-                }
-            }
-            return countOfCells;
-        }
-        public bool SimpleRandomWalk(Vector2Int position, HashSet<Vector2Int> roomAreaPaths, short[,] roomArea, int steps, int diameter)
-        {
 
-            while (countOfCells < steps)
+        private int GetSteps(Block[,] roomArea)
+        {
+            var maxSteps = _matrixHelper.GetCountOfCells(roomArea);
+            var minSteps = maxSteps*2/3;
+            var steps = Random.Range(minSteps, maxSteps);
+            return steps;
+        }
+
+        public void GenerateAreaByFloorCount(Block[,] roomArea, int floorCount, Vector2Int startPosition)
+        {
+            var processedFloors = 0;
+            var position = startPosition;
+            
+            while (processedFloors < floorCount)
             {
-                Vector2Int direction = Direction2.GetRandomDirection();
-                position += direction;
-                if (!IsInValidRange(position, diameter))
+                position += Direction2.GetRandomDirection();
+                
+                if (!_matrixHelper.IsInValidRange(position))
                 {
-                    return true;
-                }
-                if (roomArea[position.y, position.x] == 1)
-                {
+                    position = startPosition;
                     continue;
                 }
-                roomArea[position.y, position.x] = 1;
-                roomAreaPaths.Add(position);
+                if (roomArea[position.y, position.x].HasFloor)
+                    continue;
+                
+                roomArea[position.y, position.x].HasFloor = true;
+                processedFloors++;
+            }
+        }
+        public void GenerateAreaByStepCount(Vector2Int startPosition, Block[,] roomArea, int steps)
+        {
+            int countOfCells = 0;
+            Vector2Int position = startPosition;
+            while (countOfCells < steps)
+            {
+                position += Direction2.GetRandomDirection();
+                if (!_matrixHelper.IsInValidRange(position))
+                {
+                    position = startPosition;
+                    continue;
+                }
+                roomArea[position.y, position.x].HasFloor = true;
                 countOfCells++;
             }
-
-            return false;
         }
     }
 }

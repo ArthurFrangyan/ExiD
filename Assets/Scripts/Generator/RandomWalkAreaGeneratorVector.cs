@@ -1,6 +1,6 @@
-﻿using Assets.Scripts.Generator.Library;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Generator.Library;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -19,9 +19,9 @@ namespace Assets.Scripts.Generator
             HashSet<Vector2Int> roomArea = new HashSet<Vector2Int>();
             var position = new Vector2Int(0, 0);
 
-            var MaxSteps = GetCountOfCells(roomArea, diameter);
-            var MinSteps = MaxSteps * 2 / 3;
-            var steps = Random.Range(MinSteps, MaxSteps) - 1;
+            var maxSteps = GetCountOfCells(roomArea, diameter);
+            var minSteps = maxSteps * 2 / 3;
+            var steps = Random.Range(minSteps, maxSteps) - 1;
 
             return SimpleRandomWalk(position, roomArea, steps, diameter);
         }

@@ -501,11 +501,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualizer: {fileID: 1810265263}
-  minRows: 2
-  maxRows: 2
-  cols: 2
-  minDiameter: 2
-  maxDiameter: 2
+  minRows: 3
+  maxRows: 4
+  minCols: 4
+  maxCols: 5
+  height: 6
+  minRoomDiameter: 2
+  maxRoomDiameter: 5
+  minRoomHeight: 1
+  maxRoomHeight: 1
 --- !u!1 &1383147869
 GameObject:
   m_ObjectHideFlags: 0

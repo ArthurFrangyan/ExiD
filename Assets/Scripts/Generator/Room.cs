@@ -1,32 +1,31 @@
 ﻿using Assets.Scripts.Data;
-using Assets.Scripts.Generator.Library;
-using System.Collections.Generic;
+using Generator.Library;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-namespace Assets.Scripts.Generator
+namespace Generator
 {
-    public class Room : Node
+    public class Room : Node, ICircle
     {
-        private Vector3Int position;
-        public Vector3Int Position { get => position; set => position = value; }
-        public Vector3 Center
-        {
-            get => position + new Vector3((Diameter - 1) / 2f, 0, (Diameter - 1) / 2f);
-        }
+        public Vector3Int Position { get; set; }
+
+        public Vector3 Center => Position + new Vector3((Diameter - 1) / 2f, 0, (Diameter - 1) / 2f);
+
         public Vector3Int CenterInt
         {
-            get => position + new Vector3Int((Diameter - 1) / 2, 0, (Diameter - 1) / 2);
-            set => position = value - new Vector3Int((Diameter - 1) / 2, 0, (Diameter - 1) / 2);
+            get => Position + new Vector3Int((Diameter - 1) / 2, 0, (Diameter - 1) / 2);
+            set => Position = value - new Vector3Int((Diameter - 1) / 2, 0, (Diameter - 1) / 2);
         }
-        public int Diameter { get; set; }
+        public int Diameter { get; }
+        public int Height { get; }
 
-        public short[,] Cells;
+        public readonly Block[,] Blocks;
 
-        public Room(int diameter)
+        public Room(IAreaGenerator areaGenerator, int diameter, int height = 1)
+            : base()
         {
             Diameter = diameter;
-            Cells = Info.RoomAreaGenerator.Generate(diameter);
+            Height = height;
+            Blocks = areaGenerator.Generate(diameter);
         }
     }
 }
