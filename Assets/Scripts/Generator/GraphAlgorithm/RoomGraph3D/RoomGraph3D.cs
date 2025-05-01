@@ -2,12 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Generator;
 using Generator.Library;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Generator
+namespace Generator.GraphAlgorithm
 {
     public class RoomGraph3D : IList<List<List<Room>>>
     {
@@ -225,10 +224,12 @@ namespace Generator
             SetCentersForRoomPlane(rooms[0], posHeight);
             for (int col = 1; col < rooms.Count; col++)
             {
-                posHeight += CalculateDistanceBetweenRooms(
-                    MaxDiameterInPlane(rooms[col - 1]),
-                    MaxDiameterInPlane(rooms[col]));
+                // posHeight += CalculateDistanceBetweenRooms(
+                //     MaxDiameterInPlane(rooms[col - 1]),
+                //     MaxDiameterInPlane(rooms[col]));
 
+                posHeight += 2;
+                
                 SetCentersForRoomPlane(rooms[col], posHeight);
             }
         }
@@ -252,11 +253,11 @@ namespace Generator
         }
         private void SetCentersForLine(List<Room> roomLine, int posCol, int posHeight, int posRow = 0)
         {
-            roomLine[0].CenterInt = new Vector3Int(posCol, posHeight, posRow);
+            roomLine[0].CenterInt = new UnityEngine.Vector3Int(posCol, posHeight, posRow);
             for (int row = 1; row < roomLine.Count; row++)
             {
                 posRow += CalculateDistanceBetweenRooms(roomLine[row - 1].Diameter, roomLine[row].Diameter);
-                roomLine[row].CenterInt = new Vector3Int(posCol, posHeight, posRow);
+                roomLine[row].CenterInt = new UnityEngine.Vector3Int(posCol, posHeight, posRow);
             }
         }
         private int StartPositionForLine(List<Room> roomsLine, int maxLineLength)
@@ -365,5 +366,26 @@ namespace Generator
             return ((IEnumerable)_roomGraph).GetEnumerator();
         }
         #endregion
+        public List<Room> ConvertList()
+        {
+            List<Room> rooms = new List<Room>();
+            foreach (var roomArea in _roomGraph)
+            {
+                foreach (var roomList in roomArea)
+                    rooms.AddRange(roomList);
+            }
+            return rooms;
+        }
+
+        public List<Node> ConvertListNodes()
+        {
+            List<Node> rooms = new List<Node>();
+            foreach (var roomArea in _roomGraph)
+            {
+                foreach (var roomList in roomArea)
+                    rooms.AddRange(roomList);
+            }
+            return rooms;
+        }
     }
 }

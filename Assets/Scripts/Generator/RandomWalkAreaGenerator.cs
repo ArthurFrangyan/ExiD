@@ -22,7 +22,7 @@ namespace Generator
 
             var steps = GetSteps(roomArea);
 
-            roomArea[startPosition.y, startPosition.x].HasFloor = true;
+            roomArea[startPosition.y, startPosition.x].IsLocked = true;
             GenerateAreaByFloorCount(roomArea, steps, startPosition);
 
             return roomArea;
@@ -50,10 +50,10 @@ namespace Generator
                     position = startPosition;
                     continue;
                 }
-                if (roomArea[position.y, position.x].HasFloor)
+                if (roomArea[position.y, position.x].IsLocked)
                     continue;
                 
-                roomArea[position.y, position.x].HasFloor = true;
+                roomArea[position.y, position.x].IsLocked = true;
                 processedFloors++;
             }
         }
@@ -69,7 +69,7 @@ namespace Generator
                     position = startPosition;
                     continue;
                 }
-                roomArea[position.y, position.x].HasFloor = true;
+                roomArea[position.y, position.x].IsLocked = true;
                 countOfCells++;
             }
         }

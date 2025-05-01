@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using Generator.Shape;
 
-namespace Generator
+namespace Generator.GraphAlgorithm
 {
 
     public static class RoomGenerator

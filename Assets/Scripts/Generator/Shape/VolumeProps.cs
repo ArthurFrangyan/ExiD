@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Generator
+namespace Generator.Shape
 {
     public class VolumeProps : IVolumeProps
     {

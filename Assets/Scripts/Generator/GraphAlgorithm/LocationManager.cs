@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Generator
+namespace Generator.GraphAlgorithm
 {
     public class LocationManager
     {
@@ -27,11 +27,11 @@ namespace Generator
         private static void SetCentersForLine(int posCol, List<Room> rooms, int posRow = 0)
         {
             List<Room> roomLine = rooms;
-            roomLine[0].CenterInt = new Vector3Int(posCol, 0, posRow);
+            roomLine[0].CenterInt = new UnityEngine.Vector3Int(posCol, 0, posRow);
             for (int row = 1; row < roomLine.Count; row++)
             {
                 posRow += CalculateDistanceBetweenRooms(roomLine[row - 1].Diameter, roomLine[row].Diameter);
-                roomLine[row].CenterInt = new Vector3Int(posCol, 0, posRow);
+                roomLine[row].CenterInt = new UnityEngine.Vector3Int(posCol, 0, posRow);
             }
         }
 

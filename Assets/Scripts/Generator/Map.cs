@@ -4,6 +4,6 @@ namespace Generator
 {
     public class Map
     {
-
+        
     }
 }

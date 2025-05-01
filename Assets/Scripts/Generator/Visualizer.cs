@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Assets.Scripts.Data;
+using Generator.GraphAlgorithm;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -27,6 +28,7 @@ namespace Generator
                 }
             }
         }
+
         public void PaintRooms2D(IList<List<Room>> rooms)
         {
             foreach (var roomLiene in rooms)
@@ -37,10 +39,12 @@ namespace Generator
                 }
             }
         }
+
         public void PaintRoom(Room room)
         {
-            PaintTiles(room.Blocks, room.Position);
+            PaintBlocksArea(room.Blocks, room.Position);
         }
+
         public void PaintPaths(HashSet<Vector3Int> pathPositions)
         {
             foreach (var position in pathPositions)
@@ -49,27 +53,80 @@ namespace Generator
             }
         }
 
-        private void PaintTiles(Block[,] cells, Vector3 center)
+        public void PaintDungeon(Dungeon dungeon)
         {
             int cellSize = Info.CellSize;
-            for (int i = 0; i < cells.GetLength(0); i++)
+            for (int x = 0; x < dungeon.Blocks.GetLength(0); x++)
+            for (int y = 0; y < dungeon.Blocks.GetLength(1); y++)
+            for (int z = 0; z < dungeon.Blocks.GetLength(2); z++)
             {
-                for (int j = 0; j < cells.GetLength(1); j++)
+                PaintBlock(dungeon.Blocks[x, y, z],
+                    new Vector3(x * cellSize, y * cellSize, z * cellSize) + dungeon.Position * cellSize);
+            }
+        }
+
+        private void PaintBlocksArea(Block[,] cells, Vector3 center)
+        {
+            int cellSize = Info.CellSize;
+            for (int y = 0; y < cells.GetLength(0); y++)
+            {
+                for (int x = 0; x < cells.GetLength(1); x++)
                 {
-                    if (cells[i, j].HasFloor)
-                    {
-                        PaintSingleTile(
-                            new Vector3(j * cellSize, 0, i * cellSize) + center * cellSize,
-                            environments.Floors[Random.Range(0, environments.Floors.Length - 1)]);
-                    }
+                    PaintBlock(cells[y,x], 
+                        new Vector3(x * cellSize, 0, y * cellSize) + center * cellSize);
                 }
             }
         }
 
-        private void PaintSingleTile(Vector3 position, GameObject tile)
+        private void PaintBlock(Block block, Vector3 position)
+        {
+            var cellSize= Info.CellSize;
+            if (block.HasTopWall)
+            {
+                PaintSingleTile(
+                    position + new Vector3(0, 0, cellSize/2f),
+                    environments.Walls[Random.Range(0, environments.Walls.Length - 1)]);
+            }
+            if (block.HasBottomWall)
+            {
+                PaintSingleTile(
+                    position + new Vector3(0, 0, -cellSize/2f),
+                    environments.Walls[Random.Range(0, environments.Walls.Length - 1)],
+                    180);
+            }
+            if (block.HasRightWall)
+            {
+                PaintSingleTile(
+                    position + new Vector3(cellSize/2f, 0, 0),
+                    environments.Walls[Random.Range(0, environments.Walls.Length - 1)],
+                    90);
+            }
+            if (block.HasLeftWall)
+            {
+                PaintSingleTile(
+                    position + new Vector3(-cellSize/2f, 0, 0),
+                    environments.Walls[Random.Range(0, environments.Walls.Length - 1)],
+                    -90);
+            }
+            if (block.HasFloor)
+            {
+                PaintSingleTile(
+                    position,
+                    environments.Floors[Random.Range(0, environments.Floors.Length - 1)]);
+            }
+            if (block.HasCeil)
+            {
+                PaintSingleTile(
+                    position + new Vector3(0, cellSize, 0),
+                    environments.Ceils[Random.Range(0, environments.Ceils.Length - 1)]);
+            }
+        }
+
+        private void PaintSingleTile(Vector3 position, GameObject tile, float yAngle = 0)
         {
             var floor = Instantiate(tile, parentObject.transform);
             floor.transform.position = position;
+            floor.transform.eulerAngles = new Vector3(0, yAngle, 0);
             _instanceCells.Add(floor);
         }
         public void Clean()

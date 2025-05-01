@@ -12,15 +12,15 @@ namespace Generator
     {
         private Dictionary<Node, HashSet<Node>> _possibleMovements;
         private HashSet<Node> _nextNodes;
-        private readonly PathTree _pathTree;
+        private readonly PathTree<Node> _pathTree;
 
         public TreeGenerator()
         {
             _possibleMovements = new Dictionary<Node, HashSet<Node>>();
             _nextNodes = new HashSet<Node>();
-            _pathTree = new PathTree();
+            _pathTree = new PathTree<Node>();
         }
-        public PathTree GenerateTree(List<Node> nodes)
+        public PathTree<Node> GenerateTree(List<Node> nodes)
         {
             _possibleMovements = MovePossibleMovementsToDictionary(nodes);
 
@@ -54,7 +54,7 @@ namespace Generator
             _nextNodes.UnionWith(_possibleMovements[nextNode]);
             _nextNodes.ExceptWith(_pathTree.Nodes);
 
-            _pathTree.Combinations.Add((previousNode, nextNode));
+            _pathTree.Edges.Add(new Edge<Node>(previousNode, nextNode));
         }
 
         private Dictionary<Node, HashSet<Node>> MovePossibleMovementsToDictionary(List<Node> nodes)
@@ -77,11 +77,6 @@ namespace Generator
             return dictionaryNodes;
         }
 
-        private Node GetRandomNodeFrom<T>(T nodes) where T : ICollection<Node>
-        {
-            return nodes.ElementAt(Random.Range(0, nodes.Count));
-        }
-
         private void GetRandomDisconnectedRoom(ICollection<Node> nodes)
         {
             Node node = GetRandomNodeFrom(nodes);
@@ -90,5 +85,9 @@ namespace Generator
             _pathTree.Nodes.Add(node);
         }
 
+        private Node GetRandomNodeFrom<T>(T nodes) where T : ICollection<Node>
+        {
+            return nodes.ElementAt(Random.Range(0, nodes.Count));
+        }
     }
 }

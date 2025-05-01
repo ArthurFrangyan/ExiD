@@ -1,4 +1,4 @@
-namespace Generator
+namespace Generator.Shape
 {
     public interface IAreaProps : ILineProps
     {

@@ -2,7 +2,10 @@ using System.Linq;
 using Assets.Scripts.Data;
 using Assets.Scripts.Generator;
 using Generator;
+using Generator.GraphAlgorithm;
 using Generator.Library;
+using Generator.PathFinder.AStarAlgorithm;
+using Generator.Shape;
 using UnityEngine;
 
 public class DungeonGenerator : MonoBehaviour
@@ -30,13 +33,23 @@ public class DungeonGenerator : MonoBehaviour
 
     public void RunProceduralGeneration()
     {
+        var rooms = new RoomGraph2D(new AreaProps(minCols, minRows, maxRows), new RoomProps(minRoomDiameter, maxRoomDiameter, new RandomWalkAreaGenerator()));
+        // var rooms =new RoomGraph3D(height, minRows, maxRows, minCols, maxCols, minRoomDiameter, maxRoomDiameter, minRoomHeight, maxRoomHeight);
+        
+        
+        var pathGenerator = new PathGenerator();
+        
+        var treeGenerator = new TreeGenerator();
+        // var pathTree = treeGenerator.GenerateTree(rooms.SelectMany(list => list).Cast<Node>().ToList());
+        var pathTree = treeGenerator.GenerateTree(rooms.ConvertListNodes());
+        
+        
+        var dungeon = Dungeon.GenerateDungeonMatrix(rooms.ConvertList());
+        pathTree.ToPathTreeRoom();
+        pathGenerator.GeneratePaths(dungeon, pathTree.ToPathTreeRoom());
+
         visualizer.Clean();
-        RoomGraph2D rooms = new RoomGraph2D(new AreaProps(minCols, minRows, maxRows), new RoomProps(minRoomDiameter, maxRoomDiameter, new RandomWalkAreaGenerator()));
-        visualizer.PaintRooms2D(rooms);
-        TreeGenerator treeGenerator = new TreeGenerator();
-        PathTree pathTree = treeGenerator.GenerateTree(rooms.SelectMany(list => list).Cast<Node>().ToList());
-        PathGenerator tree = new PathGenerator(pathTree.Combinations, pathTree.Nodes);
-        visualizer.PaintPaths(tree.PathPositions);
+        visualizer.PaintDungeon(dungeon);
         // RoomGraph3D rooms = new RoomGraph3D(height, minRows, maxRows, minCols, maxCols, minRoomDiameter, maxRoomDiameter, minRoomHeight, maxRoomHeight);
         // visualizer.PaintRooms3D(rooms);
     }

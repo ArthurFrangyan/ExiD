@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace Generator
+namespace Generator.Shape
 {
     public class LineProps : ILineProps
     {

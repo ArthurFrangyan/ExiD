@@ -10,10 +10,10 @@ namespace Generator
 
         public Vector3 Center => Position + new Vector3((Diameter - 1) / 2f, 0, (Diameter - 1) / 2f);
 
-        public Vector3Int CenterInt
+        public UnityEngine.Vector3Int CenterInt
         {
-            get => Position + new Vector3Int((Diameter - 1) / 2, 0, (Diameter - 1) / 2);
-            set => Position = value - new Vector3Int((Diameter - 1) / 2, 0, (Diameter - 1) / 2);
+            get => Position + new UnityEngine.Vector3Int((Diameter - 1) / 2, 0, (Diameter - 1) / 2);
+            set => Position = value - new UnityEngine.Vector3Int((Diameter - 1) / 2, 0, (Diameter - 1) / 2);
         }
         public int Diameter { get; }
         public int Height { get; }

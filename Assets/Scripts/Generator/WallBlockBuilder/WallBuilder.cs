@@ -1,6 +1,6 @@
-namespace Generator
+namespace Generator.WallBlockBuilder
 {
-    public class WallBuilder
+    public static class WallBuilder
     {
         public static void Build(Block[,] roomArea)
         {

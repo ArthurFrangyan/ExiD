@@ -2,36 +2,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Generator;
+using Generator.GraphAlgorithm;
 using Generator.Library;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Generator
 {
-    public class PathGenerator
+    public class SimplePathGenerator
     {
-        public HashSet<Vector3Int> PathPositions { get; }
-        
-        private readonly List<(Node, Node)> _combinations;
-        private readonly HashSet<Node> _nodes;
-        private readonly TreeGenerator _treeGenerator;
+        private HashSet<Vector3Int> PathPositions { get; } = new();
 
-        private PathGenerator()
+        public HashSet<Vector3Int> GeneratePaths(PathTree<Node> pathTree)
         {
-            PathPositions = new HashSet<Vector3Int>();
-        }
-        public PathGenerator(List<(Node, Node)> combinations, HashSet<Node> nodes) : this()
-        {
-            _combinations = combinations;
-            _nodes = nodes;
-            GeneratePaths();
-        }
-        public void GeneratePaths()
-        {
-            foreach ((Node first, Node second) in _combinations)
+            foreach ((Node first, Node second) in pathTree.Edges)
             {
-                GeneratePathBetween((Room)first, (Room)second);
+                GeneratePathBetween((Room)first, (Room)second, pathTree.Nodes);
             }
+
+            return PathPositions;
         }
         public T ConvertTo<T>(RoomGraph2D roomGraph) where T : IList, new()
         {
@@ -46,7 +35,7 @@ namespace Generator
             return nodes;
         }
 
-        private void GeneratePathBetween(Room first, Room second)
+        private void GeneratePathBetween(Room first, Room second, List<Node> nodes)
         {
             Vector3Int position = Vector3ToVector3Int(first.Center);
             Vector3 destinyPosition = second.Center;
@@ -55,7 +44,7 @@ namespace Generator
 
             while (!IsInTheRoom(position, second))
             {
-                if (CanAddPath(position))
+                if (CanAddPath(position, nodes))
                 {
                     PathPositions.Add(position);
                 }
@@ -64,13 +53,13 @@ namespace Generator
                 position += direction;
             }
         }
-        private bool CanAddPath(Vector3Int position)
+        private bool CanAddPath(Vector3Int position, List<Node> nodes)
         {
             if (IsInThePath(position))
             {
                 return false;
             }
-            foreach (Room room in _nodes)
+            foreach (Room room in nodes)
             {
                 if (IsInTheRoom(position, room))
                 {
@@ -146,8 +135,7 @@ namespace Generator
                 return 1;
             if (number < 0)
                 return -1;
-            
-            return default;
+            return 0;
         }
     }
 }

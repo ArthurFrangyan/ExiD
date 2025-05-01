@@ -1,3 +1,4 @@
+using Generator.Shape;
 using UnityEngine;
 
 namespace Generator

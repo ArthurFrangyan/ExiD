@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Generator.Library;
+using Generator.Shape;
 
-namespace Generator
+namespace Generator.GraphAlgorithm
 {
     public class RoomGraph2D : IList<List<Room>>
     {
@@ -23,6 +25,26 @@ namespace Generator
             NodeConnector<Room>.Connect(_roomGraph);
             LocationManager.SetCenters(_roomGraph);
         }
+
+        public List<Room> ConvertList()
+        {
+            List<Room> rooms = new List<Room>();
+            foreach (var roomList in _roomGraph)
+            {
+                rooms.AddRange(roomList);
+            }
+            return rooms;
+        }
+        public List<Node> ConvertListNodes()
+        {
+            List<Node> rooms = new List<Node>();
+            foreach (var roomList in _roomGraph)
+            {
+                rooms.AddRange(roomList);
+            }
+            return rooms;
+        }
+        
         
         #region IList
         public void Add(List<Room> item)
@@ -75,5 +97,7 @@ namespace Generator
             _roomGraph.RemoveAt(index);
         }
         #endregion
+
+        
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Generator;
 using Generator.Library;
+using Generator.WallBlockBuilder;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,7 +11,6 @@ namespace Generator
 {
     public class RandomWalkAreaGeneratorBlock3d
     {
-
         public Block[][,] Generate(int diameter, int height, int countOfSubRooms)
         {
             if (diameter < 1)
@@ -71,7 +71,7 @@ namespace Generator
 
         private bool IsInValidRange(Vector2Int position, int diameter)
         {
-            return Sphere.IsInValidRange(new Vector3Int(position.x, 0, position.y), new Vector3((diameter - 1) / 2f, 0, (diameter - 1) / 2f), diameter);
+            return Sphere.IsInValidRange(new UnityEngine.Vector3Int(position.x, 0, position.y), new Vector3((diameter - 1) / 2f, 0, (diameter - 1) / 2f), diameter);
         }
         private bool IsInValidRangeForArea(Vector2Int position, Block[,] area)
         {
