@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Generator.PathFinder.AStarAlgorithm
+namespace Generator.PathFinders.AStarAlgorithm
 {
     public interface IVoxelGridRef<TClass> where TClass : class
     {

@@ -14,6 +14,7 @@ namespace Generator
             Center = new Vector2((diameter - 1) / 2f, (diameter - 1) / 2f);
             Diameter = diameter;
         }
+
         public bool IsInValidRange(Vector2Int position)
         {
             return Sphere.IsInValidRange(new UnityEngine.Vector3Int(position.x, 0, position.y), new Vector3(this.Center.x, 0.0f, this.Center.y), Diameter);

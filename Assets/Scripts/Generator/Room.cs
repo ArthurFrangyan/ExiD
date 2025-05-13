@@ -21,11 +21,16 @@ namespace Generator
         public readonly Block[,] Blocks;
 
         public Room(IAreaGenerator areaGenerator, int diameter, int height = 1)
-            : base()
         {
             Diameter = diameter;
             Height = height;
             Blocks = areaGenerator.Generate(diameter);
+        }
+
+        public bool InBoundaryRoom(Vector3Int pos)
+        {
+            return pos.x >= 0 && pos.x < Blocks.GetLength(1) &&
+                   pos.z >= 0 && pos.z < Blocks.GetLength(0);
         }
     }
 }

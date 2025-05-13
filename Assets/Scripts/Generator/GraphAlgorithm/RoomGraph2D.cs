@@ -22,11 +22,11 @@ namespace Generator.GraphAlgorithm
         public void Generate(AreaProps areaProps, RoomProps roomProps)
         {
             _roomGraph = RoomGenerator.NewArea(areaProps, roomProps);
-            NodeConnector<Room>.Connect(_roomGraph);
+            NodeConnector<Room>.ConnectArea(_roomGraph);
             LocationManager.SetCenters(_roomGraph);
         }
 
-        public List<Room> ConvertList()
+        public List<Room> ConvertListRoom()
         {
             List<Room> rooms = new List<Room>();
             foreach (var roomList in _roomGraph)

@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Assets.Scripts.Data;
 using Generator.GraphAlgorithm;
+using Generator.GraphAlgorithm.RoomGraph3D;
+using Generator.PathFinders;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -49,25 +51,46 @@ namespace Generator
         {
             foreach (var position in pathPositions)
             {
-                PaintSingleTile(position * Info.CellSize, environments.Floors[Random.Range(0, environments.Floors.Length - 1)]);
+                PaintSingleTile(Dungeon.WorldPosition(position), environments.Floors[Random.Range(0, environments.Floors.Length - 1)]);
             }
         }
 
         public void PaintDungeon(Dungeon dungeon)
         {
-            int cellSize = Info.CellSize;
-            for (int x = 0; x < dungeon.Blocks.GetLength(0); x++)
-            for (int y = 0; y < dungeon.Blocks.GetLength(1); y++)
-            for (int z = 0; z < dungeon.Blocks.GetLength(2); z++)
+            for (int x = 0; x < dungeon.Size.x; x++)
+            for (int y = 0; y < dungeon.Size.y; y++)
+            for (int z = 0; z < dungeon.Size.z; z++)
             {
-                PaintBlock(dungeon.Blocks[x, y, z],
-                    new Vector3(x * cellSize, y * cellSize, z * cellSize) + dungeon.Position * cellSize);
+                PaintBlock(dungeon[x, y, z],
+                    new Vector3(x, y, z) * Dungeon.CellSize + dungeon.Position);
             }
+            foreach (var stairs in dungeon.Staircases)
+            {
+                PaintStairs(stairs);
+            }
+            
+            for (int y = 0; y < dungeon.Size.y; y++)
+            for (int x = 0; x <= dungeon.Size.x; x++)
+            for (int z = 0; z <= dungeon.Size.z; z++)
+            {
+                if (dungeon[x, y, z].HasBottomLeftColumn)
+                    PaintColumn(new Vector3(x, y, z) * Dungeon.CellSize + dungeon.Position - new Vector3(1,0,1)*Dungeon.CellSize/2f);;
+            }
+        }
+
+        private void PaintStairs(Stairs stairs)
+        {
+            PaintSingleTile(stairs.Position, environments.Stairs[stairs.GetTypeIndex()], stairs.RotationY); 
+        }
+
+        private void PaintColumn(Vector3 position)
+        {
+            PaintSingleTile(position, environments.Columns[Random.Range(0, environments.Columns.Length - 1)]);
         }
 
         private void PaintBlocksArea(Block[,] cells, Vector3 center)
         {
-            int cellSize = Info.CellSize;
+            int cellSize = Dungeon.CellSize;
             for (int y = 0; y < cells.GetLength(0); y++)
             {
                 for (int x = 0; x < cells.GetLength(1); x++)
@@ -80,45 +103,45 @@ namespace Generator
 
         private void PaintBlock(Block block, Vector3 position)
         {
-            var cellSize= Info.CellSize;
+            var cellSize= Dungeon.CellSize;
             if (block.HasTopWall)
             {
                 PaintSingleTile(
                     position + new Vector3(0, 0, cellSize/2f),
-                    environments.Walls[Random.Range(0, environments.Walls.Length - 1)]);
+                    environments.Walls[Random.Range(0, environments.Walls.Length)]);
             }
             if (block.HasBottomWall)
             {
                 PaintSingleTile(
                     position + new Vector3(0, 0, -cellSize/2f),
-                    environments.Walls[Random.Range(0, environments.Walls.Length - 1)],
+                    environments.Walls[Random.Range(0, environments.Walls.Length)],
                     180);
             }
             if (block.HasRightWall)
             {
                 PaintSingleTile(
                     position + new Vector3(cellSize/2f, 0, 0),
-                    environments.Walls[Random.Range(0, environments.Walls.Length - 1)],
+                    environments.Walls[Random.Range(0, environments.Walls.Length)],
                     90);
             }
             if (block.HasLeftWall)
             {
                 PaintSingleTile(
                     position + new Vector3(-cellSize/2f, 0, 0),
-                    environments.Walls[Random.Range(0, environments.Walls.Length - 1)],
+                    environments.Walls[Random.Range(0,environments.Walls.Length)],
                     -90);
             }
             if (block.HasFloor)
             {
                 PaintSingleTile(
                     position,
-                    environments.Floors[Random.Range(0, environments.Floors.Length - 1)]);
+                    environments.Floors[Random.Range(0, environments.Floors.Length)]);
             }
-            if (block.HasCeil)
+            if (block.HasRoof)
             {
                 PaintSingleTile(
                     position + new Vector3(0, cellSize, 0),
-                    environments.Ceils[Random.Range(0, environments.Ceils.Length - 1)]);
+                    environments.Ceils[Random.Range(0, environments.Ceils.Length)]);
             }
         }
 

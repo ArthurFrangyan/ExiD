@@ -4,22 +4,24 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Assets.Scripts.Data;
+using Generator.PathFinders;
 using UnityEngine;
 
 namespace Generator
 {
     public class Dungeon : IEnumerable<Block>
     {
-        public Block[,,] Blocks { get; set; }
+        private Block[,,] Blocks { get; set; }
         public Vector3Int Size { get; }
         public Vector3Int Position { get; set; }
-        public List<Stairs> Stairs { get; set; }
+        public static int CellSize { get; set; } = 4;
+        public List<Stairs> Staircases { get; set; }
 
         public Dungeon(int xSize, int ySize, int zSize, Vector3Int position)
         {
-            Blocks = new Block[xSize,ySize,zSize];
+            Blocks = new Block[xSize+1, ySize, zSize+1];
             Size = new Vector3Int(xSize, ySize, zSize);
-            Stairs = new List<Stairs>();
+            Staircases = new List<Stairs>();
             Position = position;
         }
         public Dungeon(Vector3Int size, Vector3Int position) : this(size.x, size.y, size.z, position) { }
@@ -72,7 +74,7 @@ namespace Generator
             
             var max = new Vector3Int(maxX, maxY, maxZ);
             var min = new Vector3Int(minX, minY, minZ);
-            return new VoxelGridProps(min,max - min, Info.CellSize);
+            return new VoxelGridProps(min,max - min, CellSize);
         }
 
         private struct VoxelGridProps
@@ -96,6 +98,11 @@ namespace Generator
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+        public static Vector3 WorldPosition(Vector3Int position)
+        {
+            return position * CellSize;
         }
     }
 }

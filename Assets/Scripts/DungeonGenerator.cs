@@ -4,7 +4,6 @@ using Assets.Scripts.Generator;
 using Generator;
 using Generator.GraphAlgorithm;
 using Generator.Library;
-using Generator.PathFinder.AStarAlgorithm;
 using Generator.Shape;
 using UnityEngine;
 
@@ -33,24 +32,6 @@ public class DungeonGenerator : MonoBehaviour
 
     public void RunProceduralGeneration()
     {
-        var rooms = new RoomGraph2D(new AreaProps(minCols, minRows, maxRows), new RoomProps(minRoomDiameter, maxRoomDiameter, new RandomWalkAreaGenerator()));
-        // var rooms =new RoomGraph3D(height, minRows, maxRows, minCols, maxCols, minRoomDiameter, maxRoomDiameter, minRoomHeight, maxRoomHeight);
-        
-        
-        var pathGenerator = new PathGenerator();
-        
-        var treeGenerator = new TreeGenerator();
-        // var pathTree = treeGenerator.GenerateTree(rooms.SelectMany(list => list).Cast<Node>().ToList());
-        var pathTree = treeGenerator.GenerateTree(rooms.ConvertListNodes());
-        
-        
-        var dungeon = Dungeon.GenerateDungeonMatrix(rooms.ConvertList());
-        pathTree.ToPathTreeRoom();
-        pathGenerator.GeneratePaths(dungeon, pathTree.ToPathTreeRoom());
-
-        visualizer.Clean();
-        visualizer.PaintDungeon(dungeon);
-        // RoomGraph3D rooms = new RoomGraph3D(height, minRows, maxRows, minCols, maxCols, minRoomDiameter, maxRoomDiameter, minRoomHeight, maxRoomHeight);
-        // visualizer.PaintRooms3D(rooms);
+        Generator.DungeonGenerator.Generate(visualizer, height, minRows, maxRows, minCols, maxCols, minRoomDiameter, maxRoomDiameter, minRoomHeight, maxRoomHeight);
     }
 }

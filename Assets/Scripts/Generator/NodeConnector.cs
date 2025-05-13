@@ -6,7 +6,35 @@ namespace Generator
 {
     public static class NodeConnector<TNode> where TNode : Node
     {
-        public static void Connect(IList<List<TNode>> nodes)
+        public static void ConnectVolume(List<List<List<TNode>>> rooms)
+        {
+            for (int i = 0; i < rooms.Count; i++)
+            {
+                ConnectArea(rooms[i]);
+            }
+            for (int i = 0; i < rooms.Count-1; i++)
+            {
+                ConnectBetweenPlanes(rooms[i], rooms[i + 1]);
+            }
+        }
+        private static void ConnectBetweenPlanes(List<List<TNode>> button, List<List<TNode>> top)
+        {
+            if (button.Count > top.Count)
+                (button, top) = (top, button);
+
+            int[] degree = FindRandomDegree(button.Count, top.Count);
+
+            for (int i = 0, j = 0; i < button.Count; i++)
+            {
+                int k = j + degree[i];
+                for (; j < k; j++)
+                {
+                    ConnectBetweenLines(button[i], top[i]);
+                }
+            }
+        }
+
+        public static void ConnectArea(IList<List<TNode>> nodes)
         {
             if (nodes.Count == 0)
                 return;

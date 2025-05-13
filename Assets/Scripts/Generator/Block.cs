@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace Generator
 {
@@ -10,18 +11,28 @@ namespace Generator
         public enum Property : short
         {
             None            = 0,
+            Everything      = ~0,
+            
             HasFloor        = 1 << 0,
-            HasCeil         = 1 << 1,
+            HasRoof         = 1 << 1,
             HasTopWall      = 1 << 2,
             HasBottomWall   = 1 << 3,
             HasLeftWall     = 1 << 4,
             HasRightWall    = 1 << 5,
+            
             Locked          = 1 << 6,
             
             Height0         = 0,
             Height1         = 1 << 7,
             Height2         = 2 << 7,
             Height3         = 3 << 7,
+            
+            HasBottomLeftColumn = 1 << 9,
+            HasFloorLeftStoneCorner = 1 << 10,
+            HasFloorBottomStoneCorner = 1 << 11,
+            
+            ConnectedToRoof = 1 << 12,
+            ConnectedToFloor = 1 << 13,
         }
 
         public static Block Empty = new Block { _data = Property.None};
@@ -34,15 +45,46 @@ namespace Generator
         {
             _data = block._data;
         }
+
+        public bool ConnectedToRoof
+        {
+            get => (_data & Property.ConnectedToRoof) != 0;
+            set => _data = value ? _data | Property.ConnectedToRoof : _data & ~Property.ConnectedToRoof;
+        }
+
+        public bool ConnectedToFloor
+        {
+            get => (_data & Property.ConnectedToFloor) != 0;
+            set => _data = value ? _data | Property.ConnectedToFloor : _data & ~Property.ConnectedToFloor;
+        }
+
+        public bool HasBottomLeftColumn
+        {
+            get => (_data & Property.HasBottomLeftColumn) != 0;
+            set => _data = value ? _data | Property.HasBottomLeftColumn : _data & ~Property.HasBottomLeftColumn;
+        }
+
+        public bool HasFloorLeftStoneCorner
+        {
+            get => (_data & Property.HasFloorLeftStoneCorner) != 0;
+            set => _data = value ? _data | Property.HasFloorLeftStoneCorner : _data & ~Property.HasFloorLeftStoneCorner;
+        }
+
+        public bool HasFloorBottomStoneCorner
+        {
+            get => (_data & Property.HasFloorBottomStoneCorner) != 0;
+            set => _data = value ? _data | Property.HasFloorBottomStoneCorner : _data & ~Property.HasFloorBottomStoneCorner;
+        }
+
         public bool HasFloor
         {
             get => (_data & Property.HasFloor) != 0;
             set => _data = value ? _data | Property.HasFloor : _data & ~Property.HasFloor;
         }
-        public bool HasCeil
+        public bool HasRoof
         {
-            get => (_data & Property.HasCeil) != 0;
-            set => _data = value ? _data | Property.HasCeil : _data & ~Property.HasCeil;
+            get => (_data & Property.HasRoof) != 0;
+            set => _data = value ? _data | Property.HasRoof : _data & ~Property.HasRoof;
         }
         public bool HasTopWall
         {
@@ -80,7 +122,60 @@ namespace Generator
             set => _data = (_data & ~Property.Height3) | (Property)((value & 3) << 7);
         }
 
+        public void SetWall(Vector3Int direction, bool value)
+        {
+            if (direction == Vector3Int.left)
+                HasLeftWall = value;
+            else if (direction == Vector3Int.right)
+                HasRightWall = value;
+            else if (direction == Vector3Int.forward)
+                HasTopWall = value;
+            else if (direction == Vector3Int.back)
+                HasBottomWall = value;
+            else if (direction == Vector3Int.down)
+                HasFloor = value;
+            else if (direction == Vector3Int.up)
+                HasRoof = value;
+            else
+                throw new ArgumentException();
+        }
+        public bool GetWall(Vector3Int direction)
+        {
+            if (direction == Vector3Int.left)
+                return HasLeftWall;
+            if (direction == Vector3Int.right)
+                return HasRightWall;
+            if (direction == Vector3Int.forward)
+                return HasTopWall;
+            if (direction == Vector3Int.back)
+                return HasBottomWall;
+            if (direction == Vector3Int.down)
+                return HasFloor;
+            if (direction == Vector3Int.up)
+                return HasRoof;
+            
+            throw new ArgumentException();
+        }
 
+        public void SetConnected(Vector3Int direction, bool value)
+        {
+            if (direction == Vector3Int.down)
+                ConnectedToFloor = value;
+            else if (direction == Vector3Int.up)
+                ConnectedToRoof = value;
+            else
+                throw new ArgumentException();
+        }
+
+        public bool GetConnected(Vector3Int direction)
+        {
+            if (direction == Vector3Int.down)
+                return ConnectedToFloor;
+            if (direction == Vector3Int.up)
+                return ConnectedToRoof;
+            
+            throw new ArgumentException();
+        }
         public override int GetHashCode()
         {
             return (int)_data;

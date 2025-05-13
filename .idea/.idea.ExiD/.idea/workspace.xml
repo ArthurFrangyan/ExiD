@@ -5,78 +5,76 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3969afc7-6043-4952-bb88-eb38dbe71859" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Collections.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Collections/PriorityQueue.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Collections/PriorityQueue.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/BlockBuilder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/BlockBuilder.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Delaunay.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Dungeon.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Dungeon.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/RoomGraph3D.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Library/Edge.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Library/Edge.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Library/Graph.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Library/Graph.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/AStarAlgorithm.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/AStarAlgorithm.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/IVoxelGridRef.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/IVoxelGridRef.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/Math.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/Math.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/PathGenerator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/PathGenerator.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/Vertex.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/Vertex.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/VoxelGridVertex.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/VoxelGridVertex.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Stairs.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Stairs.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/WallBlockBuilder.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ExiD/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ExiD/.idea/projectSettingsUpdater.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Collections/Collections.asmdef" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Data.asmdef" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Collections.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Collections/PriorityQueue.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Collections/PriorityQueue.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/DungeonGenerator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/DungeonGenerator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Generator.asmdef" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Generator.asmdef.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Library/VectorExt.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Library/VectorExt.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/PathFinder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/PathGenerator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/VoxelGridVertex.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/IMovement.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/IMovement.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StairsLShapedLeftMovement.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StairsLShapedLeftMovement.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StairsLShapedMovement.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StairsLShapedMovement.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StairsLShapedRightMovement.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StairsLShapedRightMovement.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StairsStraightMovement.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StairsStraightMovement.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StartPointMovement.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StartPointMovement.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StraightMovement.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StraightMovement.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Stairs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tests/EditMode.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tests/EditMode/AStartAlgorithmTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tests/EditMode/AStartAlgorithmTests.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tests/EditMode/BlockTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tests/EditMode/BlockTests.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tests/EditMode/EditMode.asmdef" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tests/EditMode/EditMode.asmdef.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ExiD/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ExiD/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/A_Temp.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/A_Temp.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/EnvironmentScriptableObject.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/EnvironmentScriptableObject.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Info.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Info.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/AreaProps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/AreaProps.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/AreaProps.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/AreaProps.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Block.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Block.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/IAreaProps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/IAreaProps.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/IAreaProps.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/IAreaProps.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/ILineProps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/ILineProps.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/ILineProps.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/ILineProps.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/IRoomProps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/IRoomProps.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/IRoomProps.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/IRoomProps.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/IVolumeProps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/IVolumeProps.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/IVolumeProps.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/IVolumeProps.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/LineProps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/LineProps.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/LineProps.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/LineProps.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/LocationManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/LocationManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/LocationManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/LocationManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Map.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Map.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/BlockBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/BlockBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Dungeon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Dungeon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/RoomGraph2D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/RoomGraph2D.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/RoomGraph3D/RoomGraph3D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/RoomGraph3D/RoomGraph3D.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/MatrixHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/MatrixHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/SimplePathGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathGenerator.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/SimplePathGenerator.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathTree.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/RandomWalkAreaGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/RandomWalkAreaGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/NodeConnector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/NodeConnector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/AStarAlgorithm.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/AStarAlgorithm.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/PathFinder.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/IVoxelGridRef.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/IVoxelGridRef.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/IVoxelGridRef.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/IVoxelGridRef.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/Math.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Math.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/Math.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Math.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/PathGenerator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/PathGenerator.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/PathGenerator.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/Vertex.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/Vertex.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/Vertex.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/Vertex.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/VoxelGridVertex.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/VoxelGridVertex.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/VoxelGridVertex.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/RandomWalkAreaGeneratorBlock3d.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/RandomWalkAreaGeneratorBlock3d.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/RandomWalkAreaGeneratorVector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/RandomWalkAreaGeneratorVector.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Room.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Room.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/RoomGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/RoomGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/RoomGenerator.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/RoomGenerator.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/RoomGraph2D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/RoomGraph2D.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/RoomGraph2D.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/RoomGraph2D.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/RoomGraph3D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/RoomGraph3D/RoomGraph3D.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/RoomGraph3D.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/RoomGraph3D/RoomGraph3D.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/RoomProps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/RoomProps.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/TreeGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/TreeGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Stairs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Stairs.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Visualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Visualizer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/VolumeProps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/VolumeProps.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/VolumeProps.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/VolumeProps.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/WallBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/WallBlockBuilder/WallBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/WallBuilder.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/WallBlockBuilder/WallBuilder.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/WallBlockBuilder.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/WallBlockBuilder/WallBuilder.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/WallBlockBuilder/WallBuilder.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,17 +88,12 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/13c0c460649d4ce49f991e2c222fa63546ae00/18/94a5785d/List`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/13c0c460649d4ce49f991e2c222fa63546ae00/32/5bf21230/IndexOutOfRangeException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/13c0c460649d4ce49f991e2c222fa63546ae00/7a/012d97e6/NullReferenceException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2431722e3e3e41d78b6718bb39ab91111df400/12/a0a5a8ac/Vector3Int.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2431722e3e3e41d78b6718bb39ab91111df400/20/3a0803a8/Debug.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2431722e3e3e41d78b6718bb39ab91111df400/32/f88f2c8c/Vector3.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/19/7897bb86/IEnumerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/26/cb522a47/IDisposable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/55/ddc32d82/IEnumerable`1.cs" root0="FORCE_HIGHLIGHTING" />
@@ -108,22 +101,26 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/89/349fc9dd/ICollection`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/b8/d3b9e340/IEnumerable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/c4/1ece1ab3/IList`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/c4/4e585561/IComparer`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/ef/dae0a85b/IEnumerator`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7ae67de414c34a0397e0ee5801c5da5a10fc00/25/8c9c904e/Enumerable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/986dbf6bbb55458da06dccd1004ffa0427400/2a/582a6254/VoxelGridVertex.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4a91f199aff8e0e187cfc4b284b295c84c1a6afbec11c6f1d4115fe816212/System.Runtime.CompilerServices.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/Block.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/RoomGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/RoomGraph2D.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/RoomGraph3D.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/IAreaGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/ICircle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/ISpaceGeneratorBlock.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/MatrixHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/NodeConnector.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/AStarAlgorithm.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/VoxelGridVertex.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/PathFinder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/PathGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/VoxelGridVertex.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StairsLShapedMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/PathTree.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/RandomWalkAreaGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/RandomWalkAreaGeneratorBlock3d.cs" root0="FORCE_HIGHLIGHTING" />
@@ -133,17 +130,23 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/SimplePathGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/SpaceGeneratorBlock.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/Sphere.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/Stairs.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/SubRoom.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/TreeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/Visualizer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/WallBlockBuilder/WallBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextInfoDebugTool.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@8017b507cc74/Unity.Mathematics/Unity.Mathematics.asmdef" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@8017b507cc74/Unity.Mathematics/math.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@481f548ebf36/Runtime/Volume/IVolume.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@bd2aa618476e/Editor/AssetPostProcessors/FBXArnoldSurfaceMaterialDescriptionPreprocessor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@5ac417e07314/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@03407c6d8751/Runtime/UGUI/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@03407c6d8751/Runtime/UGUI/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -169,7 +172,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propDebugger&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -210,15 +213,13 @@
       <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="37704">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="37704" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list>
-          <MonoRuntime />
-        </list>
+        <list />
       </option>
       <option name="selectedOptions">
         <list />
@@ -255,7 +256,19 @@
       <workItem from="1745982966384" duration="156000" />
       <workItem from="1745984030110" duration="2756000" />
       <workItem from="1745986852355" duration="57014000" />
-      <workItem from="1746100661029" duration="28817000" />
+      <workItem from="1746100661029" duration="43881000" />
+      <workItem from="1746320485994" duration="8966000" />
+      <workItem from="1746384692767" duration="20664000" />
+      <workItem from="1746455920811" duration="2258000" />
+      <workItem from="1746461706043" duration="17835000" />
+      <workItem from="1746742047366" duration="2960000" />
+      <workItem from="1746797221947" duration="27654000" />
+      <workItem from="1746877521047" duration="9945000" />
+      <workItem from="1746888542835" duration="26345000" />
+      <workItem from="1746954156171" duration="66145000" />
+      <workItem from="1747053162268" duration="71000" />
+      <workItem from="1747054826214" duration="762000" />
+      <workItem from="1747144627936" duration="695000" />
     </task>
     <servers />
   </component>
@@ -276,6 +289,11 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
               <option name="FILTERS">
                 <map>
                   <entry key="branch">
@@ -311,12 +329,26 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/PathFinder.cs</url>
+          <line>39</line>
+          <properties documentPath="E:\Documents\Unity\Cloud\ExiD\Assets\Scripts\Generator\PathFinders\AStarAlgorithm\PathFinder.cs" containingFunctionPresentation="Method 'ReconstructPath'">
+            <startOffsets>
+              <option value="1011" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1068" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="99" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Type#System.ValueTuple`2" memberName="Item2" />
         <PinnedItemInfo parentTag="Type#Generator.PathFinder.AStarAlgorithm.Vertex" memberName="Predecessor" />
+        <PinnedItemInfo parentTag="Type#Generator.PathFinder.AStarAlgorithm.Vertex" memberName="IsLocked" />
         <PinnedItemInfo parentTag="Type#Generator.PathFinder.AStarAlgorithm.Vertex" memberName="Position" />
         <PinnedItemInfo parentTag="Type#System.ValueTuple`2" memberName="Item1" />
       </pinned-members>

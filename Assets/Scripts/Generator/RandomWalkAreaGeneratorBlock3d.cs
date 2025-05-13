@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Generator;
 using Generator.Library;
-using Generator.WallBlockBuilder;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -35,7 +34,6 @@ namespace Generator
             Block[,] roomArea = new Block[diameter, diameter];
 
             SimpleRandomWalkByFloorCount(position, roomArea, steps, diameter);
-            WallBuilder.Build(roomArea);
 
             int maxStepsSubRoom = steps / countOfSubRooms;
             int minStepsSubRoom = maxStepsSubRoom * 2 / 3;

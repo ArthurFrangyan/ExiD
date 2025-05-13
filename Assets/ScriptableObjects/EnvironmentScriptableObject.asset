@@ -40,7 +40,11 @@ MonoBehaviour:
   - {fileID: 2677685301289469738, guid: 983032862417fad4d8d24390deaa3e43, type: 3}
   - {fileID: 2500761594848502476, guid: f6992d7c0e69a1c4b81e0df4a2179dfb, type: 3}
   - {fileID: 5750367968992305642, guid: 86a529b380614c345baada08fbe25225, type: 3}
-  Columns: []
+  Columns:
+  - {fileID: 8017994772880146370, guid: 9ef28035d7c342943bb7f99bacc6e2c0, type: 3}
+  - {fileID: 2834694023295761042, guid: f01e0c7575e348f46bef197ce31af09c, type: 3}
+  - {fileID: 3237454894431267763, guid: 167f6599052f9324cb51cdfc8df4e0cb, type: 3}
+  - {fileID: 3717579440606261167, guid: e92f28a0fc6621d4f937f31c446add2d, type: 3}
   BrokenFloors: []
   FloorDusts: []
   Walls:
@@ -68,8 +72,17 @@ MonoBehaviour:
   - {fileID: 9122394061368700602, guid: 3fe3b5b8fe30ac04aa0450b5a9b083cf, type: 3}
   - {fileID: 8722751693285436886, guid: 0a7bc55ae38d0e54da06d81d62c0e94b, type: 3}
   - {fileID: 2993083828172790984, guid: a69fd4c71da5e9c4e8c4ce12ce21482e, type: 3}
-  Stairs: []
+  Stairs:
+  - {fileID: 3931183467643208941, guid: 80f789a62f870b740ba447ae3c556f3b, type: 3}
+  - {fileID: 2982032506185562962, guid: e7c65804efe306b4e8273d201f61dc36, type: 3}
+  - {fileID: 2639097468395305744, guid: 9d715df16b5adca4a9da1abbcc881487, type: 3}
+  - {fileID: 6483116130942176205, guid: 52924a44a937ca04aa445a40707080c3, type: 3}
+  - {fileID: 4374507368194797012, guid: 7b411d10bf9a4294386367ee64fb70b1, type: 3}
   Bricks: []
   BrickCracks: []
-  StoneCorners: []
+  StoneCorners:
+  - {fileID: 5328463223638295369, guid: 9ad496a029540c54ca328d20b64e6717, type: 3}
+  - {fileID: 4089723742375887535, guid: 588b1b3678db1d446a8043e6966b0267, type: 3}
+  - {fileID: 7063546316777409188, guid: b81ec44201c12a14daa503286dd8958d, type: 3}
+  - {fileID: 9110160185279468069, guid: 790b83f1b644969458248ec5070611c2, type: 3}
   WodenBoardsAndBars: []

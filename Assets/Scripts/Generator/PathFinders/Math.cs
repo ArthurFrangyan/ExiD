@@ -1,7 +1,8 @@
+using Generator.PathFinders.AStarAlgorithm;
 using Unity.Mathematics;
 using UnityEngine;
 
-namespace Generator.PathFinder.AStarAlgorithm
+namespace Generator.PathFinders
 {
     public static class Math
     {

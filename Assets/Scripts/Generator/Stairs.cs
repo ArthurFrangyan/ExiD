@@ -4,39 +4,40 @@ namespace Generator
 {
     public class Stairs
     {
-        enum Type
+        public enum Type
         {
-            Diagonal = 0,
-            CornerRight = 1,
-            CornerLeft = 2,
+            Straight = 0,
+            LShapedRight = 1,
+            LShapedLeft = 2,
         }
-        private Type _type;
-        public Vector3Int Position { get; set; }
-        public Vector3Int Direction { get; set; }
 
-        public Stairs(Vector3Int position, Vector3Int direction, Vector3Int direction2)
+        public int GetTypeIndex() => (int)_type;
+
+        private readonly Type _type;
+
+        public Vector3Int Position { get; set; }
+
+        public float RotationY { get; set; }
+
+        public Stairs(Vector3Int position, Vector3Int dir, Type type)
         {
             Position = position;
-            Direction = direction;
-            _type = direction != Vector3Int.zero ? GetType(direction, direction2) : Type.Diagonal;
+            _type = type;
+            
+            RotationY = GetRotationY(dir);
         }
-
-        private Type GetType(Vector3Int dir1, Vector3Int dir2)
+        private float GetRotationY(Vector3Int dir)
         {
-            var cross = Cross2D(dir1, dir2);
-            if (cross > 0)
+            switch (_type)
             {
-                return Type.CornerRight;
+                case Type.Straight:
+                    return Vector3.SignedAngle(Vector3.forward, dir, Vector3.up);
+                case Type.LShapedRight:
+                    return Vector3.SignedAngle(new Vector3(1, 0, 1),dir, Vector3.up);
+                case Type.LShapedLeft:
+                    return Vector3.SignedAngle(new Vector3(-1, 0, 1),dir, Vector3.up);
             }
-            if (cross < 0)
-            {
-                return Type.CornerLeft;
-            }
-            return Type.Diagonal;
-        }
-        float Cross2D(Vector3 a, Vector3 b)
-        {
-            return a.x * b.z - a.z * b.x;
+            return 0;
         }
     }
 }
