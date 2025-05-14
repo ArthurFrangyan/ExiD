@@ -78,8 +78,8 @@ namespace Generator
             {
                 return false;
             }
-            (int i, int j )= Sphere.GetMatrixIndex_XZ(position, room.Center, room.Diameter);
-            return room.Blocks[i,j].HasFloor;
+            (int z, int x )= Sphere.GetMatrixIndex_XZ(position, room.Center, room.Diameter);
+            return room[x,z].HasFloor;
         }
         private bool IsInThePath(Vector3Int position)
         {

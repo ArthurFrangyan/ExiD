@@ -17,44 +17,6 @@ namespace Generator
 
         private readonly List<GameObject> _instanceCells = new List<GameObject>();
 
-        public void PaintRooms3D(RoomGraph3D rooms)
-        {
-            for (int i = 0; i < rooms.Count; i++)
-            {
-                for (int j = 0; j < rooms[i].Count; j++)
-                {
-                    for (int k = 0; k < rooms[i][j].Count; k++)
-                    {
-                        PaintRoom(rooms[i][j][k]);
-                    }
-                }
-            }
-        }
-
-        public void PaintRooms2D(IList<List<Room>> rooms)
-        {
-            foreach (var roomLiene in rooms)
-            {
-                foreach (var room in roomLiene)
-                {
-                    PaintRoom(room);
-                }
-            }
-        }
-
-        public void PaintRoom(Room room)
-        {
-            PaintBlocksArea(room.Blocks, room.Position);
-        }
-
-        public void PaintPaths(HashSet<Vector3Int> pathPositions)
-        {
-            foreach (var position in pathPositions)
-            {
-                PaintSingleTile(Dungeon.WorldPosition(position), environments.Floors[Random.Range(0, environments.Floors.Length - 1)]);
-            }
-        }
-
         public void PaintDungeon(Dungeon dungeon)
         {
             for (int x = 0; x < dungeon.Size.x; x++)
@@ -86,19 +48,6 @@ namespace Generator
         private void PaintColumn(Vector3 position)
         {
             PaintSingleTile(position, environments.Columns[Random.Range(0, environments.Columns.Length - 1)]);
-        }
-
-        private void PaintBlocksArea(Block[,] cells, Vector3 center)
-        {
-            int cellSize = Dungeon.CellSize;
-            for (int y = 0; y < cells.GetLength(0); y++)
-            {
-                for (int x = 0; x < cells.GetLength(1); x++)
-                {
-                    PaintBlock(cells[y,x], 
-                        new Vector3(x * cellSize, 0, y * cellSize) + center * cellSize);
-                }
-            }
         }
 
         private void PaintBlock(Block block, Vector3 position)
@@ -152,6 +101,7 @@ namespace Generator
             floor.transform.eulerAngles = new Vector3(0, yAngle, 0);
             _instanceCells.Add(floor);
         }
+
         public void Clean()
         {
             if (_instanceCells is null)
@@ -161,6 +111,61 @@ namespace Generator
                 Destroy(instanceCell.gameObject);
             }
             _instanceCells.Clear();
+        }
+        
+        public void PaintRooms3D(RoomGraph3D rooms)
+        {
+            for (int i = 0; i < rooms.Count; i++)
+            {
+                for (int j = 0; j < rooms[i].Count; j++)
+                {
+                    for (int k = 0; k < rooms[i][j].Count; k++)
+                    {
+                        PaintRoom(rooms[i][j][k]);
+                    }
+                }
+            }
+        }
+        public void PaintRooms2D(IList<List<Room>> rooms)
+        {
+            foreach (var roomLiene in rooms)
+            {
+                foreach (var room in roomLiene)
+                {
+                    PaintRoom(room);
+                }
+            }
+        }
+        public void PaintRoom(Room room)
+        {
+            int cellSize = Dungeon.CellSize;
+            for (int x = 0; x < room.Size.x; x++)
+            for (int z = 0; z < room.Size.z; z++)
+            {
+                PaintBlock(room[x,z], 
+                    new Vector3(x * cellSize, 0, z * cellSize) + room.Position * cellSize);
+            }
+        }
+
+        public void PaintPaths(HashSet<Vector3Int> pathPositions)
+        {
+            foreach (var position in pathPositions)
+            {
+                PaintSingleTile(Dungeon.WorldPosition(position), environments.Floors[Random.Range(0, environments.Floors.Length - 1)]);
+            }
+        }
+
+        private void PaintBlocksArea(Block[,] cells, Vector3 center)
+        {
+            int cellSize = Dungeon.CellSize;
+            for (int y = 0; y < cells.GetLength(0); y++)
+            {
+                for (int x = 0; x < cells.GetLength(1); x++)
+                {
+                    PaintBlock(cells[y,x], 
+                        new Vector3(x * cellSize, 0, y * cellSize) + center * cellSize);
+                }
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ namespace Generator
     public class Room : Node, ICircle
     {
         public Vector3Int Position { get; set; }
+        public Vector3Int Size => new Vector3Int(Diameter, Height, Diameter);
 
         public Vector3 Center => Position + new Vector3((Diameter - 1) / 2f, 0, (Diameter - 1) / 2f);
 
@@ -18,19 +19,22 @@ namespace Generator
         public int Diameter { get; }
         public int Height { get; }
 
-        public readonly Block[,] Blocks;
+        private readonly Block[,] _blocks;
+        public Block this[Vector3Int pos] => _blocks[pos.z, pos.x];
+        public Block this[int x, int y, int z] => _blocks[z, x];
+        public Block this[int x, int z] => _blocks[z, x];
 
         public Room(IAreaGenerator areaGenerator, int diameter, int height = 1)
         {
             Diameter = diameter;
             Height = height;
-            Blocks = areaGenerator.Generate(diameter);
+            _blocks = areaGenerator.Generate(diameter);
         }
 
-        public bool InBoundaryRoom(Vector3Int pos)
+        public bool InBoundary(Vector3Int pos)
         {
-            return pos.x >= 0 && pos.x < Blocks.GetLength(1) &&
-                   pos.z >= 0 && pos.z < Blocks.GetLength(0);
+            return pos.x >= 0 && pos.x < _blocks.GetLength(1) &&
+                   pos.z >= 0 && pos.z < _blocks.GetLength(0);
         }
     }
 }

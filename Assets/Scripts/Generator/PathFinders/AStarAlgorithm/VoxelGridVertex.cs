@@ -56,12 +56,12 @@ namespace Generator.PathFinders.AStarAlgorithm
 
         public void MarkStartAndUnlockRoom(Dungeon dungeon, Room room)
         {
-            for (int i = 0; i < room.Blocks.GetLength(0); i++)
-            for (int j = 0; j < room.Blocks.GetLength(1); j++)
+            for (int x = 0; x < room.Size.x; x++)
+            for (int z = 0; z < room.Size.z; z++)
             {
-                if (room.Blocks[i, j].IsLocked)
+                if (room[z, x].IsLocked)
                 {
-                    var pos = room.Position - dungeon.Position + new Vector3Int(j,0,i);
+                    var pos = room.Position - dungeon.Position + new Vector3Int(x,0,z);
                     this[pos].IsStart = true;
                     this[pos].IsLocked = false;
                 }
@@ -70,12 +70,12 @@ namespace Generator.PathFinders.AStarAlgorithm
 
         public void RevertStartRoomToLocked(Dungeon dungeon, Room room)
         {
-            for (int i = 0; i < room.Blocks.GetLength(0); i++)
-            for (int j = 0; j < room.Blocks.GetLength(1); j++)
+            for (int x = 0; x < room.Size.x; x++)
+            for (int z = 0; z < room.Size.z; z++)
             {
-                if (room.Blocks[i, j].IsLocked)
+                if (room[x, z].IsLocked)
                 {
-                    var pos = room.Position - dungeon.Position + new Vector3Int(j,0,i);
+                    var pos = room.Position - dungeon.Position + new Vector3Int(x,0,z);
                     this[pos].IsStart = false;
                     this[pos].IsLocked = true;
                 }
@@ -84,12 +84,12 @@ namespace Generator.PathFinders.AStarAlgorithm
 
         public void MarkGoalAndUnlockRoom(Dungeon dungeon, Room room)
         {
-            for (int i = 0; i < room.Blocks.GetLength(0); i++)
-            for (int j = 0; j < room.Blocks.GetLength(1); j++)
+            for (int x = 0; x < room.Size.x; x++)
+            for (int z = 0; z < room.Size.z; z++)
             {
-                if (room.Blocks[i, j].IsLocked)
+                if (room[x, z].IsLocked)
                 {
-                    var pos = room.Position - dungeon.Position + new Vector3Int(j,0,i);
+                    var pos = room.Position - dungeon.Position + new Vector3Int(x,0,z);
                     this[pos].IsGoal = true;
                     this[pos].IsLocked = false;
                 }
@@ -98,12 +98,12 @@ namespace Generator.PathFinders.AStarAlgorithm
 
         public void RevertGoalRoomToLocked(Dungeon dungeon, Room room)
         {
-            for (int i = 0; i < room.Blocks.GetLength(0); i++)
-            for (int j = 0; j < room.Blocks.GetLength(1); j++)
+            for (int x = 0; x < room.Size.x; x++)
+            for (int z = 0; z < room.Size.z; z++)
             {
-                if (room.Blocks[i, j].IsLocked)
+                if (room[x, z].IsLocked)
                 {
-                    var pos = room.Position - dungeon.Position + new Vector3Int(j,0,i);
+                    var pos = room.Position - dungeon.Position + new Vector3Int(x,0,z);
                     this[pos].IsGoal = false;
                     this[pos].IsLocked = true;
                 }
@@ -112,23 +112,23 @@ namespace Generator.PathFinders.AStarAlgorithm
 
         public void ResetPathAnalysisData()
         {
-            for (var i0 = 0; i0 < _data.GetLength(0); i0++)
-            for (var i1 = 0; i1 < _data.GetLength(1); i1++)
-            for (var i2 = 0; i2 < _data.GetLength(2); i2++)
+            for (var x = 0; x < _data.GetLength(0); x++)
+            for (var y = 0; y < _data.GetLength(1); y++)
+            for (var z = 0; z < _data.GetLength(2); z++)
             {
-                _data[i0, i1, i2].Predecessor = null;
-                _data[i0, i1, i2].MinDistance = 0;
+                _data[x, y, z].Predecessor = null;
+                _data[x, y, z].MinDistance = 0;
             }
         }
 
         public void IncludeRoomLock(Dungeon dungeon, Room room)
         {
-            for (int i = 0; i < room.Blocks.GetLength(0); i++)
-            for (int j = 0; j < room.Blocks.GetLength(1); j++)
+            for (int x = 0; x < room.Size.x; x++)
+            for (int z = 0; z < room.Size.z; z++)
             {
-                if (room.Blocks[i, j].IsLocked)
+                if (room[x, z].IsLocked)
                 {
-                    var pos = room.Position - dungeon.Position + new Vector3Int(j,0,i);
+                    var pos = room.Position - dungeon.Position + new Vector3Int(x,0,z);
                     this[pos].IsLocked = true;
                 }
             }
@@ -136,12 +136,12 @@ namespace Generator.PathFinders.AStarAlgorithm
 
         public void ExcludeRoomLock(Dungeon dungeon, Room room)
         {
-            for (int i = 0; i < room.Blocks.GetLength(0); i++)
-            for (int j = 0; j < room.Blocks.GetLength(1); j++)
+            for (int x = 0; x < room.Size.x; x++)
+            for (int z = 0; z < room.Size.z; z++)
             {
-                if (room.Blocks[i, j].IsLocked)
+                if (room[x, z].IsLocked)
                 {
-                    var pos = room.Position - dungeon.Position + new Vector3Int(j,0,i);
+                    var pos = room.Position - dungeon.Position + new Vector3Int(x,0,z);
                     this[pos].IsLocked = false;
                 }
             }

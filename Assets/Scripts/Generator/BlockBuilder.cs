@@ -125,32 +125,32 @@ namespace Generator
             Vector3Int pos;
 
             pos = start + left + dungeon.Position - room.Position;
-            if (room.InBoundaryRoom(pos))
+            if (room.InBoundary(pos))
             {
                 dungeon[start].HasRightWall = false;
             }
             pos = start + right + dungeon.Position - room.Position;
-            if (room.InBoundaryRoom(pos))
+            if (room.InBoundary(pos))
             {
                 dungeon[start].HasLeftWall = false;
             }
             pos = start + forward + dungeon.Position - room.Position;
-            if (room.InBoundaryRoom(pos))
+            if (room.InBoundary(pos))
             {
                 dungeon[start].HasBottomWall = false;
             }
             pos = start + back + dungeon.Position - room.Position;
-            if (room.InBoundaryRoom(pos))
+            if (room.InBoundary(pos))
             {
                 dungeon[start].HasTopWall = false;
             }
             pos = start + up + dungeon.Position - room.Position;
-            if (room.InBoundaryRoom(pos))
+            if (room.InBoundary(pos))
             {
                 dungeon[start].HasFloor = false;
             }
             pos = start + down + dungeon.Position - room.Position;
-            if (room.InBoundaryRoom(pos))
+            if (room.InBoundary(pos))
             {
                 dungeon[start].HasRoof = false;
             }

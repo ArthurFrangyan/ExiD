@@ -51,10 +51,10 @@ namespace Generator
         {
             foreach (var room in rooms)
             {
-                for (int i = 0; i < room.Blocks.GetLength(0); i++)
-                for (int j = 0; j < room.Blocks.GetLength(1); j++)
+                for (int x = 0; x < room.Size.x; x++)
+                for (int z = 0; z < room.Size.z; z++)
                 {
-                    dungeon[room.Position - dungeon.Position + new Vector3Int(j,0,i)] = room.Blocks[i, j];
+                    dungeon[room.Position - dungeon.Position + new Vector3Int(x,0,z)] = room[x, z];
                 }
             }
         }

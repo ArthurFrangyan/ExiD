@@ -5,76 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3969afc7-6043-4952-bb88-eb38dbe71859" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Collections/Collections.asmdef" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Data.asmdef" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Collections.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Collections/PriorityQueue.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Collections/PriorityQueue.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/DungeonGenerator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/DungeonGenerator.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Generator.asmdef" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Generator.asmdef.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Library/VectorExt.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Library/VectorExt.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/PathFinder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/PathGenerator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/VoxelGridVertex.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/IMovement.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/IMovement.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StairsLShapedLeftMovement.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StairsLShapedLeftMovement.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StairsLShapedMovement.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StairsLShapedMovement.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StairsLShapedRightMovement.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StairsLShapedRightMovement.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StairsStraightMovement.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StairsStraightMovement.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StartPointMovement.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StartPointMovement.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StraightMovement.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StraightMovement.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Stairs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Tests/EditMode.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Tests/EditMode/AStartAlgorithmTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Tests/EditMode/AStartAlgorithmTests.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Tests/EditMode/BlockTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Tests/EditMode/BlockTests.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Tests/EditMode/EditMode.asmdef" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Tests/EditMode/EditMode.asmdef.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ExiD/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ExiD/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/A_Temp.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/A_Temp.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/EnvironmentScriptableObject.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/EnvironmentScriptableObject.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Info.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Info.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Block.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Block.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/BlockBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/BlockBuilder.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Dungeon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Dungeon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/RoomGraph2D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/RoomGraph2D.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/RoomGraph3D/RoomGraph3D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/RoomGraph3D/RoomGraph3D.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/MatrixHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/MatrixHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/NodeConnector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/NodeConnector.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/AStarAlgorithm.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/AStarAlgorithm.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/PathFinder.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/IVoxelGridRef.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/IVoxelGridRef.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/IVoxelGridRef.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/IVoxelGridRef.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/Math.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Math.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/Math.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Math.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/PathGenerator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/PathGenerator.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/PathGenerator.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/Vertex.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/Vertex.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/Vertex.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/Vertex.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/VoxelGridVertex.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinder/AStarAlgorithm/VoxelGridVertex.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/VoxelGridVertex.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/RandomWalkAreaGeneratorBlock3d.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/RandomWalkAreaGeneratorBlock3d.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/VoxelGridVertex.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/VoxelGridVertex.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Room.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Room.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Stairs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Stairs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/SimplePathGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/SimplePathGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Visualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Visualizer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/WallBlockBuilder.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/WallBlockBuilder/WallBuilder.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/WallBlockBuilder/WallBuilder.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -268,7 +205,8 @@
       <workItem from="1746954156171" duration="66145000" />
       <workItem from="1747053162268" duration="71000" />
       <workItem from="1747054826214" duration="762000" />
-      <workItem from="1747144627936" duration="695000" />
+      <workItem from="1747144627936" duration="10017000" />
+      <workItem from="1747240613014" duration="2486000" />
     </task>
     <servers />
   </component>
