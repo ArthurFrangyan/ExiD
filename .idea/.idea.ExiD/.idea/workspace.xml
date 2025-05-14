@@ -6,12 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="3969afc7-6043-4952-bb88-eb38dbe71859" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ExiD/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ExiD/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/BlockBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/BlockBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Dungeon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Dungeon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/VoxelGridVertex.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/VoxelGridVertex.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/LocationManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/LocationManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/RoomGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/RoomGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/MatrixHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/MatrixHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/RandomWalkAreaGeneratorBlock3d.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/RandomWalkAreaGeneratorBlock3d.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Room.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Room.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/AreaProps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/AreaProps.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/IAreaProps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/IAreaProps.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/ILineProps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/ILineProps.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/IVolumeProps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/IVolumeProps.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/LineProps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/LineProps.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/VolumeProps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/VolumeProps.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/SimplePathGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/SimplePathGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Visualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Visualizer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Sphere.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Sphere.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/TreeGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/TreeGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +217,7 @@
       <workItem from="1747053162268" duration="71000" />
       <workItem from="1747054826214" duration="762000" />
       <workItem from="1747144627936" duration="10017000" />
-      <workItem from="1747240613014" duration="2486000" />
+      <workItem from="1747240613014" duration="6943000" />
     </task>
     <servers />
   </component>

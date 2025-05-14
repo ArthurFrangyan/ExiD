@@ -1,4 +1,3 @@
-using Assets.Scripts.Generator;
 using UnityEngine;
 
 #nullable disable

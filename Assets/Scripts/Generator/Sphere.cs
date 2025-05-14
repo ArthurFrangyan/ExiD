@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Assets.Scripts.Generator
+namespace Generator
 {
     public static class Sphere
     {

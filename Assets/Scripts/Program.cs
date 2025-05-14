@@ -1,4 +1,3 @@
-using Assets.Scripts.Generator;
 using UnityEngine;
 
 public class Program : MonoBehaviour

@@ -6,27 +6,28 @@ namespace Generator.Shape
     {
         public VolumeProps(int height, int maxCols, int minCols, int maxRows, int minRows, int maxDiameter, int minDiameter)
         {
-            MaxCols = maxCols;
-            MinCols = minCols;
-            MaxDiameter = maxDiameter;
-            MinDiameter = minDiameter;
-            MaxRows = maxRows;
-            MinRows = minRows;
-            Height = height;
+            _maxCols = maxCols;
+            _minCols = minCols;
+            _maxDiameter = maxDiameter;
+            _minDiameter = minDiameter;
+            _maxRows = maxRows;
+            _minRows = minRows;
+            _height = height;
         }
 
-        public int Height { get; }
+        public int GetHeight() => _height;
+        private readonly int _height;
         
-        private int MinRows { get; }
-        private int MaxRows { get; }
-        public int Rows => Random.Range(MinRows, MaxRows + 1);
+        public int GetRows() => Random.Range(_minRows, _maxRows + 1);
+        private readonly int _minRows;
+        private readonly int _maxRows;
         
-        private int MinCols { get; }
-        private int MaxCols { get; }
-        public int Cols => Random.Range(MinCols, MaxCols + 1);
+        public int GetCols() => Random.Range(_minCols, _maxCols + 1);
+        private readonly int _minCols;
+        private readonly int _maxCols;
 
-        private int MinDiameter { get; }
-        private int MaxDiameter { get; }
-        public int Diameter => Random.Range(MinDiameter, MaxDiameter + 1);
+        public int GetDiameter => Random.Range(_minDiameter, _maxDiameter + 1);
+        private readonly int _minDiameter;
+        private readonly int _maxDiameter;
     }
 }

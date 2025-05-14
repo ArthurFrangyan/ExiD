@@ -6,16 +6,16 @@ namespace Generator.Shape
     {
         public AreaProps(int cols, int minRows, int maxRows)
         {
-            Cols = cols;
-            MinRows = minRows;
-            MaxRows = maxRows;
+            _cols = cols;
+            _minRows = minRows;
+            _maxRows = maxRows;
         }
 
-        public int Cols { get; }
-        
-        private int MinRows { get; }
-        private int MaxRows { get; }
-        
-        public int Rows => Random.Range(MinRows, MaxRows + 1);
+        public int GetCols() => _cols;
+        private readonly int _cols;
+
+        public int GetRows() => Random.Range(_minRows, _maxRows + 1);
+        private readonly int _minRows;
+        private readonly int _maxRows;
     }
 }

@@ -64,9 +64,9 @@ namespace Generator
             if (rooms == null || rooms.Count == 0)
                 throw new ArgumentException("Rooms collection cannot be null or empty");
             
-            var maxX = rooms.Max(r => r.Position.x + r.Diameter);
+            var maxX = rooms.Max(r => r.Position.x + r.Size.x);
             var maxY = rooms.Max(r => r.Position.y) + 1; // TODO: Height
-            var maxZ = rooms.Max(r => r.Position.z + r.Diameter);
+            var maxZ = rooms.Max(r => r.Position.z + r.Size.z);
             
             var minX = rooms.Min(r => r.Position.x);
             var minY = rooms.Min(r => r.Position.y);

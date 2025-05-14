@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Generator;
 using Generator.Library;
 using UnityEngine;
 

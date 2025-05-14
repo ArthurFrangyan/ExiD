@@ -10,7 +10,7 @@ namespace Generator.GraphAlgorithm
         {
             var rooms = new List<List<List<Room>>>();
             
-            var height = volumeProps.Height;
+            var height = volumeProps.GetHeight();
             for (var i = 0; i < height; i++)
             {
                 rooms.Add(NewArea(volumeProps, roomProps));
@@ -22,7 +22,7 @@ namespace Generator.GraphAlgorithm
         {
             List<List<Room>> rooms = new List<List<Room>>();
             
-            var cols = areaProps.Cols;
+            var cols = areaProps.GetCols();
             for (var i = 0; i < cols; i++)
             {
                 rooms.Add(NewLine(areaProps, roomProps));
@@ -35,7 +35,7 @@ namespace Generator.GraphAlgorithm
         {
             List<Room> rooms = new List<Room>();
             
-            var rows = lineProps.Rows;
+            var rows = lineProps.GetRows();
             for (var j = 0; j < rows; j++)
             {
                 rooms.Add(new Room(roomProps.Generator, roomProps.Diameter));

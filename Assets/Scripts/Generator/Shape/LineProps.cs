@@ -4,8 +4,10 @@ namespace Generator.Shape
     {
         public LineProps(int rows)
         {
-            Rows = rows;
+            _rows = rows;
         }
-        public int Rows { get; }
+
+        private readonly int _rows;
+        public int GetRows() => _rows;
     }
 }
