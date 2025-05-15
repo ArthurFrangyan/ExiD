@@ -5,24 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3969afc7-6043-4952-bb88-eb38dbe71859" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Library/Position.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Library/Position.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ExiD/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ExiD/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DungeonGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Dungeon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Dungeon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/LocationManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/LocationManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/RoomGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/RoomGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/MatrixHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/MatrixHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/RandomWalkAreaGeneratorBlock3d.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/RandomWalkAreaGeneratorBlock3d.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Room.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Room.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/AreaProps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/AreaProps.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/IAreaProps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/IAreaProps.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/ILineProps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/ILineProps.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/IVolumeProps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/IVolumeProps.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/LineProps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/LineProps.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/VolumeProps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Shape/VolumeProps.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/SimplePathGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/SimplePathGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Sphere.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Sphere.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/TreeGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/TreeGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/BlockBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/BlockBuilder.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +51,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/ISpaceGeneratorBlock.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/MatrixHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/NodeConnector.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/PathFinder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/PathFinder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/PathGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/VoxelGridVertex.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StairsLShapedMovement.cs" root0="FORCE_HIGHLIGHTING" />
@@ -161,13 +147,15 @@
       <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="49340">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="49340" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list />
+        <list>
+          <MonoRuntime />
+        </list>
       </option>
       <option name="selectedOptions">
         <list />
@@ -217,8 +205,25 @@
       <workItem from="1747053162268" duration="71000" />
       <workItem from="1747054826214" duration="762000" />
       <workItem from="1747144627936" duration="10017000" />
-      <workItem from="1747240613014" duration="6943000" />
+      <workItem from="1747240613014" duration="31934000" />
     </task>
+    <task id="LOCAL-00001" summary="Refactor RoomGenerator.cs VolumeProps.cs AreaProps.cs LineProps.cs">
+      <option name="closed" value="true" />
+      <created>1747253720800</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1747253720800</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Refactor RoomGenerator.cs VolumeProps.cs AreaProps.cs LineProps.cs">
+      <option name="closed" value="true" />
+      <created>1747253795654</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1747253795656</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,6 +267,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Refactor RoomGenerator.cs VolumeProps.cs AreaProps.cs LineProps.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -278,19 +285,6 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/PathFinder.cs</url>
-          <line>39</line>
-          <properties documentPath="E:\Documents\Unity\Cloud\ExiD\Assets\Scripts\Generator\PathFinders\AStarAlgorithm\PathFinder.cs" containingFunctionPresentation="Method 'ReconstructPath'">
-            <startOffsets>
-              <option value="1011" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1068" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="99" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
@@ -298,6 +292,7 @@
         <PinnedItemInfo parentTag="Type#System.ValueTuple`2" memberName="Item2" />
         <PinnedItemInfo parentTag="Type#Generator.PathFinder.AStarAlgorithm.Vertex" memberName="Predecessor" />
         <PinnedItemInfo parentTag="Type#Generator.PathFinder.AStarAlgorithm.Vertex" memberName="IsLocked" />
+        <PinnedItemInfo parentTag="Type#Generator.Library.Position" memberName="_vector" />
         <PinnedItemInfo parentTag="Type#Generator.PathFinder.AStarAlgorithm.Vertex" memberName="Position" />
         <PinnedItemInfo parentTag="Type#System.ValueTuple`2" memberName="Item1" />
       </pinned-members>

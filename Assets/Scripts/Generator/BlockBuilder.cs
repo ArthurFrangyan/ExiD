@@ -1,3 +1,5 @@
+using System;
+using Generator.Library;
 using UnityEngine;
 using static Generator.Library.VectorExt;
 using static UnityEngine.Vector3Int;
@@ -13,6 +15,80 @@ namespace Generator
             BuildYWallsBasedOnLock(dungeon);
         }
 
+        delegate void SetBlock(ref Block block, bool value);
+        delegate Position Enumerate(Position position);
+
+        private enum Axis
+        {
+            X,
+            Y,
+            Z
+        }
+        public static void BuildBordersBasedOnLockTest(Dungeon dungeon)
+        {
+            BuildWallsBasedOnLock(dungeon, Axis.X);
+            BuildWallsBasedOnLock(dungeon, Axis.Y);
+            BuildWallsBasedOnLock(dungeon, Axis.Z);
+        }
+        private static void BuildWallsBasedOnLock(Dungeon dungeon, Axis axis)
+        {
+            Enumerate aNext;
+            Enumerate bNext;
+            Enumerate cNext;
+            SetBlock setLeft;
+            SetBlock setRight;
+            switch (axis)
+            {
+                case Axis.X:
+                    aNext = position => position += up;
+                    bNext = position => position += forward;
+                    cNext = position => position += right;
+                    setLeft = SetBlockLeftWall;
+                    setRight = SetBlockRightWall;
+                    break;
+                case Axis.Y:
+                    aNext = position => position += right;
+                    bNext = position => position += forward;
+                    cNext = position => position += up;
+                    setLeft = SetBlockFloor;
+                    setRight = SetBlockRoof;
+                    break;
+                case Axis.Z:
+                    aNext = position => position += right;
+                    bNext = position => position += up;
+                    cNext = position => position += forward;
+                    setLeft = SetBlockBottomWall;
+                    setRight = SetBlockTopWall;
+                    break;
+                default:
+                    return;
+            }
+            void SetBlockLeftWall(ref Block block, bool value) => block.HasLeftWall = value;
+            void SetBlockRightWall(ref Block block, bool value) => block.HasRightWall = value;
+            void SetBlockBottomWall(ref Block block, bool value) => block.HasBottomWall = value;
+            void SetBlockTopWall(ref Block block, bool value) => block.HasTopWall = value;
+            void SetBlockFloor(ref Block block, bool value) => block.HasFloor = value;
+            void SetBlockRoof(ref Block block, bool value) => block.HasRoof = value;
+            
+            for (var aPos = Position.Zero; aPos < dungeon.Size; aPos = aNext(aPos))
+            for (var bPos = aPos; bPos < dungeon.Size; bPos = bNext(bPos))
+            {
+                var firstPos = bPos;
+                var secondPos = cNext(firstPos);
+                if (dungeon[firstPos].IsLocked)
+                    setLeft(ref dungeon[firstPos], true);
+                for (; secondPos < dungeon.Size; firstPos = secondPos, secondPos = cNext(secondPos))
+                {
+                    if (!dungeon[secondPos].IsLocked && dungeon[firstPos].IsLocked)
+                        setRight(ref dungeon[firstPos], true);
+                    if (!dungeon[firstPos].IsLocked && dungeon[secondPos].IsLocked)
+                        setLeft(ref dungeon[secondPos], true);
+                }
+
+                if (dungeon[firstPos].IsLocked)
+                    setRight(ref dungeon[firstPos], true);
+            }
+        }
         private static void BuildXWallsBasedOnLock(Dungeon dungeon)
         {
             for (int z = 0; z < dungeon.Size.z; z++)
