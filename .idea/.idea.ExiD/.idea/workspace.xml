@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3969afc7-6043-4952-bb88-eb38dbe71859" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Library/Position.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Library/Position.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ExiD/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ExiD/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Block.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Block.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/BlockBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/BlockBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/PathGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/PathGenerator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +43,10 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4a91f199aff8e0e187cfc4b284b295c84c1a6afbec11c6f1d4115fe816212/System.Runtime.CompilerServices.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/Documents/Unity/Cloud/ExiD/Assets/Scripts/Generator/Block.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/Block.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/Documents/Unity/Cloud/ExiD/Assets/Scripts/Generator/BlockBuilder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Documents/Unity/Cloud/ExiD/Assets/Scripts/Generator/BlockBuilder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/RoomGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/RoomGraph2D.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/IAreaGenerator.cs" root0="FORCE_HIGHLIGHTING" />
@@ -147,10 +150,10 @@
       <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="49340">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="35292">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="49340" />
+      <option name="pid" value="35292" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
         <list>
@@ -205,7 +208,7 @@
       <workItem from="1747053162268" duration="71000" />
       <workItem from="1747054826214" duration="762000" />
       <workItem from="1747144627936" duration="10017000" />
-      <workItem from="1747240613014" duration="31934000" />
+      <workItem from="1747240613014" duration="40937000" />
     </task>
     <task id="LOCAL-00001" summary="Refactor RoomGenerator.cs VolumeProps.cs AreaProps.cs LineProps.cs">
       <option name="closed" value="true" />
@@ -223,7 +226,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747253795656</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Add axis-based wall building functionality and Position struct&#10;&#10;Introduced axis-based wall building logic in BlockBuilder.cs, enabling dynamic border creation based on locking status along X, Y, and Z axes. &#10;Added a new Position struct in Generator.Library to improve 3D position handling and comparisons, enhancing code structure and readability.">
+      <option name="closed" value="true" />
+      <created>1747318206817</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1747318206817</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,6 +279,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Refactor RoomGenerator.cs VolumeProps.cs AreaProps.cs LineProps.cs" />
+    <MESSAGE value="Add axis-based wall building functionality and Position struct&#10;&#10;Introduced axis-based wall building logic in BlockBuilder.cs, enabling dynamic border creation based on locking status along X, Y, and Z axes. &#10;Added a new Position struct in Generator.Library to improve 3D position handling and comparisons, enhancing code structure and readability." />
     <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XDebuggerManager">

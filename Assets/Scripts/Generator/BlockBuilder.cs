@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using Generator.Library;
 using UnityEngine;
 using static Generator.Library.VectorExt;
@@ -15,78 +17,104 @@ namespace Generator
             BuildYWallsBasedOnLock(dungeon);
         }
 
-        delegate void SetBlock(ref Block block, bool value);
-        delegate Position Enumerate(Position position);
 
-        private enum Axis
+        private abstract class Axis
         {
-            X,
-            Y,
-            Z
+            protected Position APos = Position.Zero;
+            protected Position BPos = Position.Zero;
+            protected Position CPos = Position.Zero;
+            public delegate void SetBlock(ref Block block, bool value);
+            public delegate Position Enumerate();
+            public SetBlock SetLeftWall;
+            public SetBlock SetRightWall;
+
+            public abstract Position ANext(Position position);
+            public abstract Position BNext(Position position);
+            public abstract Position CNext(Position position);
+            public IEnumerable<Position> AAxes(Position start, Position size)
+            {
+                for (APos = start; APos < size; APos = ANext(APos))
+                    yield return APos;
+            }
+
+            public IEnumerable<Position> BAxes(Position start, Position size)
+            {
+                for (BPos = start; BPos < size; BPos = BNext(BPos))
+                    yield return BPos;
+            }
+
+            public IEnumerable<Position> CAxes(Position start, Position size)
+            {
+                for (CPos = start; CPos < size; CPos = CNext(CPos))
+                    yield return CPos;
+            }
+        }
+
+        private class XAxis : Axis
+        {
+            public XAxis()
+            {
+                SetLeftWall = Block.SetBlockLeftWall;
+                SetRightWall = Block.SetBlockRightWall;
+            }
+
+            public override Position ANext(Position position) => position + up;
+            public override Position BNext(Position position) => position + forward;
+            public override Position CNext(Position position) => position + right;
+
+        }
+        private class YAxis : Axis
+        {
+            public YAxis()
+            {
+                SetLeftWall = Block.SetBlockFloor;
+                SetRightWall = Block.SetBlockRoof;
+            }
+
+            public override Position ANext(Position position) => position + right;
+            public override Position BNext(Position position) => position + forward;
+            public override Position CNext(Position position) => position + up;
+
+        }
+
+        private class ZAxis : Axis
+        {
+            public ZAxis()
+            {
+                SetLeftWall = Block.SetBlockBottomWall;
+                SetRightWall = Block.SetBlockTopWall;
+            }
+
+            public override Position ANext(Position position) => position + right;
+            public override Position BNext(Position position) => position + up;
+            public override Position CNext(Position position) => position + forward;
         }
         public static void BuildBordersBasedOnLockTest(Dungeon dungeon)
         {
-            BuildWallsBasedOnLock(dungeon, Axis.X);
-            BuildWallsBasedOnLock(dungeon, Axis.Y);
-            BuildWallsBasedOnLock(dungeon, Axis.Z);
+            BuildWallsBasedOnLock(dungeon, new XAxis());
+            BuildWallsBasedOnLock(dungeon, new YAxis());
+            BuildWallsBasedOnLock(dungeon, new ZAxis());
         }
         private static void BuildWallsBasedOnLock(Dungeon dungeon, Axis axis)
         {
-            Enumerate aNext;
-            Enumerate bNext;
-            Enumerate cNext;
-            SetBlock setLeft;
-            SetBlock setRight;
-            switch (axis)
-            {
-                case Axis.X:
-                    aNext = position => position += up;
-                    bNext = position => position += forward;
-                    cNext = position => position += right;
-                    setLeft = SetBlockLeftWall;
-                    setRight = SetBlockRightWall;
-                    break;
-                case Axis.Y:
-                    aNext = position => position += right;
-                    bNext = position => position += forward;
-                    cNext = position => position += up;
-                    setLeft = SetBlockFloor;
-                    setRight = SetBlockRoof;
-                    break;
-                case Axis.Z:
-                    aNext = position => position += right;
-                    bNext = position => position += up;
-                    cNext = position => position += forward;
-                    setLeft = SetBlockBottomWall;
-                    setRight = SetBlockTopWall;
-                    break;
-                default:
-                    return;
-            }
-            void SetBlockLeftWall(ref Block block, bool value) => block.HasLeftWall = value;
-            void SetBlockRightWall(ref Block block, bool value) => block.HasRightWall = value;
-            void SetBlockBottomWall(ref Block block, bool value) => block.HasBottomWall = value;
-            void SetBlockTopWall(ref Block block, bool value) => block.HasTopWall = value;
-            void SetBlockFloor(ref Block block, bool value) => block.HasFloor = value;
-            void SetBlockRoof(ref Block block, bool value) => block.HasRoof = value;
-            
-            for (var aPos = Position.Zero; aPos < dungeon.Size; aPos = aNext(aPos))
-            for (var bPos = aPos; bPos < dungeon.Size; bPos = bNext(bPos))
+            foreach (var aPos in axis.AAxes(zero, dungeon.Size))
+            foreach (var bPos in axis.BAxes(aPos, dungeon.Size))
             {
                 var firstPos = bPos;
-                var secondPos = cNext(firstPos);
                 if (dungeon[firstPos].IsLocked)
-                    setLeft(ref dungeon[firstPos], true);
-                for (; secondPos < dungeon.Size; firstPos = secondPos, secondPos = cNext(secondPos))
+                    axis.SetLeftWall(ref dungeon[firstPos], true);
+                foreach (var secondPos in axis.CAxes(axis.CNext(bPos), dungeon.Size))
                 {
                     if (!dungeon[secondPos].IsLocked && dungeon[firstPos].IsLocked)
-                        setRight(ref dungeon[firstPos], true);
+                        axis.SetRightWall(ref dungeon[firstPos], true);
                     if (!dungeon[firstPos].IsLocked && dungeon[secondPos].IsLocked)
-                        setLeft(ref dungeon[secondPos], true);
+                        axis.SetLeftWall(ref dungeon[secondPos], true);
+                    
+                    firstPos = secondPos;
                 }
 
                 if (dungeon[firstPos].IsLocked)
-                    setRight(ref dungeon[firstPos], true);
+                    axis.SetRightWall(ref dungeon[firstPos], true);
             }
         }
         private static void BuildXWallsBasedOnLock(Dungeon dungeon)

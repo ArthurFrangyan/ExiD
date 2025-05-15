@@ -156,6 +156,13 @@ namespace Generator
             
             throw new ArgumentException();
         }
+        
+        public static void SetBlockLeftWall(ref Block block, bool value) => block.HasLeftWall = value;
+        public static void SetBlockRightWall(ref Block block, bool value) => block.HasRightWall = value;
+        public static void SetBlockBottomWall(ref Block block, bool value) => block.HasBottomWall = value;
+        public static void SetBlockTopWall(ref Block block, bool value) => block.HasTopWall = value;
+        public static void SetBlockFloor(ref Block block, bool value) => block.HasFloor = value;
+        public static void SetBlockRoof(ref Block block, bool value) => block.HasRoof = value;
 
         public void SetConnected(Vector3Int direction, bool value)
         {
