@@ -5,17 +5,31 @@ using static UnityEngine.Vector3Int;
 
 namespace Generator
 {
-    public abstract class Axes
+    public class Axes
     {
-        public static Axes X => new YZXAxes();
-        public static Axes Y => new XZYAxes();
-        public static Axes Z => new XYZAxes();
-        public static Axes XY => new XYZAxes();
-        public static Axes XZ => new XZYAxes();
-        public static Axes YZ => new YZXAxes();
-        public Vector3Int AVec { get; protected set; }
-        public Vector3Int BVec { get; protected set; }
-        public Vector3Int CVec { get; protected set; }
+        public static Axes X => YZXAxes();
+        public static Axes Y => XZYAxes();
+        public static Axes Z => XYZAxes();
+        public static Axes XY => XYZAxes();
+        public static Axes XZ => XZYAxes();
+        public static Axes YZ => YZXAxes();
+        public Vector3Int AVec { get; private set; }
+        public Vector3Int BVec { get; private set; }
+        public Vector3Int CVec { get; private set; }
+
+        private static Axes XYZAxes() => new(right, up, forward);
+        private static Axes XZYAxes() => new(right, forward, up);
+        private static Axes YZXAxes() => new(up, forward, right);
+        private static Axes YXZAxes() => new(up, right, forward);
+        private static Axes ZXYAxes() => new(forward, right, up);
+        private static Axes ZYXAxes() => new(forward, up, right);
+
+        public Axes(Vector3Int aVec, Vector3Int bVec, Vector3Int cVec)
+        {
+            AVec = aVec;
+            BVec = bVec;
+            CVec = cVec;
+        }
 
         public IEnumerable<Position> A(Position start, Position end)
         {
@@ -68,62 +82,6 @@ namespace Generator
             {
                 yield return abcPos;
             }
-        }
-    }
-
-    public class XYZAxes : Axes
-    {
-        public XYZAxes()
-        {
-            AVec = right;
-            BVec = up;
-            CVec = forward;
-        }
-    }
-    public class XZYAxes : Axes
-    {
-        public XZYAxes()
-        {
-            AVec = right;
-            BVec = forward;
-            CVec = up;
-        }
-    }
-    public class YZXAxes : Axes
-    {
-        public YZXAxes()
-        {
-            AVec =  up;
-            BVec =  forward;
-            CVec =  right;
-        }
-    }
-    public class YXZAxes : Axes
-    {
-        public YXZAxes()
-        {
-            AVec =  up;
-            BVec =  right;
-            CVec =  forward;
-        }
-    }
-
-    public class ZYXAxes : Axes
-    {
-        public ZYXAxes()
-        {
-            AVec =  forward;
-            BVec =  up;
-            CVec =  right;
-        }
-    }
-    public class ZXYAxes : Axes
-    {
-        public ZXYAxes()
-        {
-            AVec =  forward;
-            BVec =  right;
-            CVec =  up;
         }
     }
 }
