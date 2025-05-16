@@ -19,7 +19,7 @@ namespace Generator
 
         public Dungeon(int xSize, int ySize, int zSize, Vector3Int position)
         {
-            Blocks = new Block[xSize+1, ySize, zSize+1];
+            Blocks = new Block[xSize+1, ySize+1, zSize+1];
             Size = new Vector3Int(xSize, ySize, zSize);
             Staircases = new List<Stairs>();
             Position = position;

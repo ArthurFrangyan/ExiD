@@ -33,9 +33,9 @@ namespace Generator.PathFinders.Movements
             dung[pos + dir].SetConnected(-VectorY(dir), true);
 
             if (dir.y > 0)
-                dung[pos + 2 * VectorXZ(dir)].SetWall(-VectorXZ(dir), true);
+                dung[pos + 2 * VectorXZ(dir)].SetBorder(-VectorXZ(dir), true);
             else
-                dung[position + VectorY(dir)].SetWall(VectorXZ(dir), true);
+                dung[position + VectorY(dir)].SetBorder(VectorXZ(dir), true);
         }
 
         private static void CreateStairs(Dungeon dung, Vector3Int pos, Vector3Int dir)

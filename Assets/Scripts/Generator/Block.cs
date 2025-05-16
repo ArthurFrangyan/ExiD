@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static UnityEngine.Vector3Int;
 
 namespace Generator
 {
@@ -122,53 +123,60 @@ namespace Generator
             set => _data = (_data & ~Property.Height3) | (Property)((value & 3) << 7);
         }
 
-        public void SetWall(Vector3Int direction, bool value)
+        public static void SetBorder(ref Block block, Vector3Int direction, bool value) => block.SetBorder(direction, value);
+        public static bool GetBorder(ref Block block, Vector3Int direction) => block.GetBorder(direction);
+        public void SetBorder(Vector3Int direction, bool value)
         {
-            if (direction == Vector3Int.left)
+            if (direction == left)
                 HasLeftWall = value;
-            else if (direction == Vector3Int.right)
+            else if (direction == right)
                 HasRightWall = value;
-            else if (direction == Vector3Int.forward)
+            else if (direction == forward)
                 HasTopWall = value;
-            else if (direction == Vector3Int.back)
+            else if (direction == back)
                 HasBottomWall = value;
-            else if (direction == Vector3Int.down)
+            else if (direction == down)
                 HasFloor = value;
-            else if (direction == Vector3Int.up)
+            else if (direction == up)
                 HasRoof = value;
+            else if (direction == back + left)
+                HasBottomLeftColumn = value;
+            else if (direction == down + back)
+                HasFloorBottomStoneCorner = value;
+            else if (direction == down + left)
+                HasFloorLeftStoneCorner = value;
             else
                 throw new ArgumentException();
         }
-        public bool GetWall(Vector3Int direction)
+        public bool GetBorder(Vector3Int direction)
         {
-            if (direction == Vector3Int.left)
+            if (direction == left)
                 return HasLeftWall;
-            if (direction == Vector3Int.right)
+            if (direction == right)
                 return HasRightWall;
-            if (direction == Vector3Int.forward)
+            if (direction == forward)
                 return HasTopWall;
-            if (direction == Vector3Int.back)
+            if (direction == back)
                 return HasBottomWall;
-            if (direction == Vector3Int.down)
+            if (direction == down)
                 return HasFloor;
-            if (direction == Vector3Int.up)
+            if (direction == up)
                 return HasRoof;
+            if (direction == back + left)
+                return HasBottomLeftColumn;
+            if (direction == down + back)
+                return HasFloorBottomStoneCorner;
+            if (direction == down + left)
+                return HasFloorLeftStoneCorner;
             
             throw new ArgumentException();
         }
-        
-        public static void SetBlockLeftWall(ref Block block, bool value) => block.HasLeftWall = value;
-        public static void SetBlockRightWall(ref Block block, bool value) => block.HasRightWall = value;
-        public static void SetBlockBottomWall(ref Block block, bool value) => block.HasBottomWall = value;
-        public static void SetBlockTopWall(ref Block block, bool value) => block.HasTopWall = value;
-        public static void SetBlockFloor(ref Block block, bool value) => block.HasFloor = value;
-        public static void SetBlockRoof(ref Block block, bool value) => block.HasRoof = value;
 
         public void SetConnected(Vector3Int direction, bool value)
         {
-            if (direction == Vector3Int.down)
+            if (direction == down)
                 ConnectedToFloor = value;
-            else if (direction == Vector3Int.up)
+            else if (direction == up)
                 ConnectedToRoof = value;
             else
                 throw new ArgumentException();
@@ -176,9 +184,9 @@ namespace Generator
 
         public bool GetConnected(Vector3Int direction)
         {
-            if (direction == Vector3Int.down)
+            if (direction == down)
                 return ConnectedToFloor;
-            if (direction == Vector3Int.up)
+            if (direction == up)
                 return ConnectedToRoof;
             
             throw new ArgumentException();

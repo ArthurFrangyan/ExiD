@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Generator.Library;
 using UnityEngine;
 using static Generator.Library.VectorExt;
 using static UnityEngine.Vector3Int;
@@ -12,216 +8,232 @@ namespace Generator
     {
         public static void BuildBordersBasedOnLock(Dungeon dungeon)
         {
-            BuildXWallsBasedOnLock(dungeon);
-            BuildZWallsBasedOnLock(dungeon);
-            BuildYWallsBasedOnLock(dungeon);
+            BuildWallsBasedOnLock(dungeon, Axes.X);
+            BuildWallsBasedOnLock(dungeon, Axes.Y);
+            BuildWallsBasedOnLock(dungeon, Axes.Z);
         }
 
-
-        private abstract class Axis
+        public static void BuildBordersBasedOnLockLevelSeparately(Dungeon dungeon)
         {
-            protected Position APos = Position.Zero;
-            protected Position BPos = Position.Zero;
-            protected Position CPos = Position.Zero;
-            public delegate void SetBlock(ref Block block, bool value);
-            public delegate Position Enumerate();
-            public SetBlock SetLeftWall;
-            public SetBlock SetRightWall;
-
-            public abstract Position ANext(Position position);
-            public abstract Position BNext(Position position);
-            public abstract Position CNext(Position position);
-            public IEnumerable<Position> AAxes(Position start, Position size)
-            {
-                for (APos = start; APos < size; APos = ANext(APos))
-                    yield return APos;
-            }
-
-            public IEnumerable<Position> BAxes(Position start, Position size)
-            {
-                for (BPos = start; BPos < size; BPos = BNext(BPos))
-                    yield return BPos;
-            }
-
-            public IEnumerable<Position> CAxes(Position start, Position size)
-            {
-                for (CPos = start; CPos < size; CPos = CNext(CPos))
-                    yield return CPos;
-            }
+            BuildWallsBasedOnLock(dungeon, Axes.X);
+            BuildWallsBasedOnLock(dungeon, Axes.Z);
+            BuildWallsBasedOnLockAndConnection(dungeon);
         }
 
-        private class XAxis : Axis
+        private static void BuildWallsBasedOnLock(Dungeon dungeon, Axes axes)
         {
-            public XAxis()
+            foreach (var abPos in axes.AB(zero, dungeon.Size))
             {
-                SetLeftWall = Block.SetBlockLeftWall;
-                SetRightWall = Block.SetBlockRightWall;
-            }
-
-            public override Position ANext(Position position) => position + up;
-            public override Position BNext(Position position) => position + forward;
-            public override Position CNext(Position position) => position + right;
-
-        }
-        private class YAxis : Axis
-        {
-            public YAxis()
-            {
-                SetLeftWall = Block.SetBlockFloor;
-                SetRightWall = Block.SetBlockRoof;
-            }
-
-            public override Position ANext(Position position) => position + right;
-            public override Position BNext(Position position) => position + forward;
-            public override Position CNext(Position position) => position + up;
-
-        }
-
-        private class ZAxis : Axis
-        {
-            public ZAxis()
-            {
-                SetLeftWall = Block.SetBlockBottomWall;
-                SetRightWall = Block.SetBlockTopWall;
-            }
-
-            public override Position ANext(Position position) => position + right;
-            public override Position BNext(Position position) => position + up;
-            public override Position CNext(Position position) => position + forward;
-        }
-        public static void BuildBordersBasedOnLockTest(Dungeon dungeon)
-        {
-            BuildWallsBasedOnLock(dungeon, new XAxis());
-            BuildWallsBasedOnLock(dungeon, new YAxis());
-            BuildWallsBasedOnLock(dungeon, new ZAxis());
-        }
-        private static void BuildWallsBasedOnLock(Dungeon dungeon, Axis axis)
-        {
-            foreach (var aPos in axis.AAxes(zero, dungeon.Size))
-            foreach (var bPos in axis.BAxes(aPos, dungeon.Size))
-            {
-                var firstPos = bPos;
+                var firstPos = abPos;
                 if (dungeon[firstPos].IsLocked)
-                    axis.SetLeftWall(ref dungeon[firstPos], true);
-                foreach (var secondPos in axis.CAxes(axis.CNext(bPos), dungeon.Size))
+                    dungeon[firstPos].SetBorder(-axes.CVec, true);
+                foreach (var secondPos in axes.C(abPos + axes.CVec, dungeon.Size))
                 {
                     if (!dungeon[secondPos].IsLocked && dungeon[firstPos].IsLocked)
-                        axis.SetRightWall(ref dungeon[firstPos], true);
+                        dungeon[firstPos].SetBorder(axes.CVec, true);
                     if (!dungeon[firstPos].IsLocked && dungeon[secondPos].IsLocked)
-                        axis.SetLeftWall(ref dungeon[secondPos], true);
+                        dungeon[secondPos].SetBorder(-axes.CVec, true);
                     
                     firstPos = secondPos;
                 }
 
                 if (dungeon[firstPos].IsLocked)
-                    axis.SetRightWall(ref dungeon[firstPos], true);
-            }
-        }
-        private static void BuildXWallsBasedOnLock(Dungeon dungeon)
-        {
-            for (int z = 0; z < dungeon.Size.z; z++)
-            for (int y = 0; y < dungeon.Size.y; y++)
-            {
-                if (dungeon[0, y, z].IsLocked)
-                    dungeon[0, y, z].HasLeftWall = true;
-                for (int x = 1; x < dungeon.Size.x; x++)
-                {
-                    if (!dungeon[x, y, z].IsLocked && dungeon[x - 1, y, z].IsLocked)
-                        dungeon[x - 1, y, z].HasRightWall = true;
-                    if (!dungeon[x - 1, y, z].IsLocked && dungeon[x, y, z].IsLocked)
-                        dungeon[x, y, z].HasLeftWall = true;
-                }
-
-                if (dungeon[dungeon.Size.x - 1, y, z].IsLocked)
-                    dungeon[dungeon.Size.x - 1, y, z].HasRightWall = true;
+                    dungeon[firstPos].SetBorder(axes.CVec, true);
             }
         }
 
-        private static void BuildZWallsBasedOnLock(Dungeon dungeon)
+        private static void BuildWallsBasedOnLockAndConnection(Dungeon dungeon)
         {
-            for (int x = 0; x < dungeon.Size.x; x++)
-            for (int y = 0; y < dungeon.Size.y; y++)
+            var axes = Axes.Y;
+            foreach (var abPos in axes.AB(zero, dungeon.Size))
             {
-                if (dungeon[x, y, 0].IsLocked)
-                    dungeon[x, y, 0].HasBottomWall = true;
-                for (int z = 1; z < dungeon.Size.z; z++)
+                var firstPos = abPos;
+                if (dungeon[firstPos].IsLocked)
+                    dungeon[firstPos].SetBorder(-axes.CVec, true);
+                foreach (var secondPos in axes.C(abPos + axes.CVec, dungeon.Size))
                 {
-                    ref var current = ref dungeon[x, y, z - 1];
-                    ref var next = ref dungeon[x, y, z];
-                    if (!next.IsLocked && current.IsLocked)
-                        current.HasTopWall = true;
-                    if (!current.IsLocked && next.IsLocked)
-                        next.HasBottomWall = true;
-                }
-
-                if (dungeon[x, y, dungeon.Size.z - 1].IsLocked)
-                    dungeon[x, y, dungeon.Size.z - 1].HasTopWall = true;
-            }
-        }
-
-        private static void BuildYWallsBasedOnLock(Dungeon dungeon)
-        {
-            for (int x = 0; x < dungeon.Size.x; x++)
-            for (int z = 0; z < dungeon.Size.z; z++)
-            {
-                if (dungeon[x, 0, z].IsLocked)
-                    dungeon[x, 0, z].HasFloor = true;
-                for (int y = 1; y < dungeon.Size.y; y++)
-                {
-                    ref var current = ref dungeon[x, y - 1, z];
-                    ref var next = ref dungeon[x, y, z];
-                    if (!next.IsLocked && current.IsLocked)
-                        current.HasRoof = true;
-                    if (!current.IsLocked && next.IsLocked)
-                        next.HasFloor = true;
-                }
-
-                if (dungeon[x, dungeon.Size.y - 1, z].IsLocked)
-                    dungeon[x, dungeon.Size.y - 1, z].HasRoof = true;
-            }
-        }
-
-        public static void BuildBordersBasedOnLockLevelSeparately(Dungeon dungeon)
-        {
-            BuildXWallsBasedOnLock(dungeon);
-            BuildZWallsBasedOnLock(dungeon);
-            BuildYWallsBasedOnLockCountConnection(dungeon);
-        }
-        private static void BuildYWallsBasedOnLockCountConnection(Dungeon dungeon)
-        {
-            for (int x = 0; x < dungeon.Size.x; x++)
-            for (int z = 0; z < dungeon.Size.z; z++)
-            {
-                if (dungeon[x, 0, z].IsLocked)
-                    dungeon[x, 0, z].HasFloor = true;
-                for (int y = 1; y < dungeon.Size.y; y++)
-                {
-                    ref var current = ref dungeon[x, y - 1, z];
-                    ref var next = ref dungeon[x, y, z];
+                    ref var current = ref dungeon[firstPos];
+                    ref var next = ref dungeon[secondPos];
                     if (!next.IsLocked && current.IsLocked || current is { ConnectedToRoof: false, IsLocked: true })
-                        current.HasRoof = true;
+                        dungeon[firstPos].SetBorder(axes.CVec, true);
                     if (!current.IsLocked && next.IsLocked || next is { ConnectedToFloor: false, IsLocked: true })
-                        next.HasFloor = true;
+                        dungeon[secondPos].SetBorder(-axes.CVec, true);
+                    
+                    firstPos = secondPos;
                 }
 
-                if (dungeon[x, dungeon.Size.y - 1, z].IsLocked)
-                    dungeon[x, dungeon.Size.y - 1, z].HasRoof = true;
+                if (dungeon[firstPos].IsLocked)
+                    dungeon[firstPos].SetBorder(axes.CVec, true);
             }
         }
 
 
-        public static void BuildYWallsBasedOnLockSeparately(Dungeon dungeon)
+        public static void BuildYWallsBasedOnLockSeparately(Dungeon dungeon, Axes axes)
         {
-            for (int y = 0; y < dungeon.Size.y; y++)
-            for (int x = 0; x < dungeon.Size.x; x++)
-            for (int z = 0; z < dungeon.Size.z; z++)
+            foreach (var pos in axes.ABC(zero, dungeon.Size))
             {
-                if (dungeon[x, y, z].IsLocked)
+                if (dungeon[pos].IsLocked)
                 {
-                    dungeon[x, y, z].HasFloor = true;
-                    dungeon[x, y, z].HasRoof = true;
+                    dungeon[pos].SetBorder(-axes.CVec, true);
+                    dungeon[pos].SetBorder(axes.CVec, true);
                 }
             }
+        }
+
+        public static void ReBuildEdgesByWalls(Dungeon dungeon)
+        {
+            ReBuildEdgesByWalls(dungeon, Axes.Y);
+            // TODO stoneCorners
+        }
+
+
+        private static void ReBuildEdgesByWalls(Dungeon dungeon, Axes axes)
+        {
+            var edge = -axes.AVec - axes.BVec;
+            foreach (var pos in axes.ABC(axes.AVec + axes.BVec, dungeon.Size + axes.AVec + axes.BVec)) 
+                dungeon[pos].SetBorder(edge, IsValidEdgeBetween4Faces(dungeon, axes, pos));
+            
+            foreach (var pos in axes.BC(axes.BVec, dungeon.Size + axes.BVec))
+                dungeon[pos].SetBorder(edge, IsValidEdgeBWithoutA(dungeon, axes, pos));
+            
+            foreach (var pos in axes.AC(axes.AVec, dungeon.Size + axes.AVec))
+                dungeon[pos].SetBorder(edge, IsValidEdgeAWithoutB(dungeon, axes, pos));
+            
+            foreach (var pos in axes.C(zero, dungeon.Size))
+                dungeon[pos].SetBorder(edge, IsValidEdge(dungeon, axes, pos));
+        }
+
+        private static bool IsValidEdgeBetween4Faces(Dungeon dungeon, Axes axes, Vector3Int pos)
+        {
+            return dungeon[pos].GetBorder(-axes.AVec) || dungeon[pos].GetBorder(-axes.BVec) ||
+                   dungeon[pos - axes.BVec].GetBorder(-axes.AVec) || dungeon[pos - axes.BVec].GetBorder(axes.BVec) ||
+                   dungeon[pos - axes.AVec].GetBorder(axes.AVec) || dungeon[pos - axes.AVec].GetBorder(-axes.BVec) || 
+                   dungeon[pos - axes.AVec - axes.BVec].GetBorder(axes.AVec) || dungeon[pos - axes.BVec - axes.AVec].GetBorder(axes.BVec);
+        }
+
+        private static bool IsValidEdgeAWithoutB(Dungeon dungeon, Axes axes, Vector3Int pos)
+        {
+            return dungeon[pos].GetBorder(-axes.AVec) || dungeon[pos].GetBorder(-axes.BVec) ||
+                   dungeon[pos - axes.AVec].GetBorder(axes.AVec) || dungeon[pos - axes.AVec].GetBorder(-axes.BVec);
+        }
+
+        private static bool IsValidEdgeBWithoutA(Dungeon dungeon, Axes axes, Vector3Int pos)
+        {
+            return dungeon[pos].GetBorder(-axes.AVec) || dungeon[pos].GetBorder(-axes.BVec) ||
+                   dungeon[pos - axes.BVec].GetBorder(-axes.AVec) || dungeon[pos - axes.BVec].GetBorder(axes.BVec);
+        }
+
+        private static bool IsValidEdge(Dungeon dungeon, Axes axes, Vector3Int pos)
+        {
+            return dungeon[pos].GetBorder(-axes.AVec) || dungeon[pos].GetBorder(-axes.BVec);
+        }
+
+        public static void ReBuildColumnsByWalls(Dungeon dungeon)
+        {
+            for (int y = 0; y < dungeon.Size.y; y++)
+            for (int x = 1; x <= dungeon.Size.x; x++)
+            for (int z = 1; z <= dungeon.Size.z; z++)
+            {
+                dungeon[x, y, z].HasBottomLeftColumn = 
+                    IsValidColumnBetween4Walls(dungeon, new Vector3Int(x, y, z));
+            }
+            
+            for (int y = 0; y < dungeon.Size.y; y++)
+            for (int x = 1; x < dungeon.Size.x; x++)
+            {
+                dungeon[x, y, 0].HasBottomLeftColumn = 
+                    IsValidColumnXWallsWithoutZ(dungeon, new Vector3Int(x, y, 0));
+            }
+            for (int y = 0; y < dungeon.Size.y; y++)
+            for (int z = 1; z < dungeon.Size.z; z++)
+            {
+                dungeon[0, y, z].HasBottomLeftColumn = 
+                    IsValidColumnZWallsWithoutX(dungeon, new Vector3Int(0, y, z));
+            }
+            for (int y = 0; y < dungeon.Size.y; y++)
+            {
+                dungeon[0, y, 0].HasBottomLeftColumn = 
+                    IsValidColumn(dungeon, new Vector3Int(0, y, 0));
+            }
+        }
+
+        private static bool IsValidColumnBetween4Walls(Dungeon dungeon, Vector3Int pos)
+        {
+            return dungeon[pos].HasLeftWall || dungeon[pos].HasBottomWall ||
+                   dungeon[pos + back].HasLeftWall || dungeon[pos + back].HasTopWall ||
+                   dungeon[pos + left].HasRightWall || dungeon[pos + left].HasBottomWall || 
+                   dungeon[pos + BackLeft].HasRightWall || dungeon[pos + BackLeft].HasTopWall;
+        }
+
+        private static bool IsValidColumnXWallsWithoutZ(Dungeon dungeon, Vector3Int pos)
+        {
+            return dungeon[pos].HasLeftWall || dungeon[pos].HasBottomWall ||
+                   dungeon[pos + left].HasRightWall || dungeon[pos + left].HasBottomWall;
+        }
+
+        private static bool IsValidColumnZWallsWithoutX(Dungeon dungeon, Vector3Int pos)
+        {
+            return dungeon[pos].HasLeftWall || dungeon[pos].HasBottomWall ||
+                   dungeon[pos + back].HasLeftWall || dungeon[pos + back].HasTopWall;
+        }
+
+        private static bool IsValidColumn(Dungeon dungeon, Vector3Int pos)
+        {
+            return dungeon[pos].HasLeftWall || dungeon[pos].HasBottomWall;
+        }
+
+        private static void BuildColumnsByBlockLock(Dungeon dungeon)
+        {
+            for (int y = 0; y < dungeon.Size.y; y++)
+            for (int x = 1; x <= dungeon.Size.x; x++)
+            for (int z = 1; z <= dungeon.Size.z; z++)
+            {
+                if (IsValidColumnBetween4Blocks(dungeon, new Vector3Int(x, y, z)))
+                    dungeon[x, y, z].HasBottomLeftColumn = true;
+            }
+            
+            for (int y = 0; y < dungeon.Size.y; y++)
+            for (int x = 1; x < dungeon.Size.x; x++)
+            {
+                if (IsValidColumnXBlocksWithoutZ(dungeon, new Vector3Int(x, y, 0)))
+                    dungeon[x, y, 0].HasBottomLeftColumn = true;
+            }
+            for (int y = 0; y < dungeon.Size.y; y++)
+            for (int z = 1; z < dungeon.Size.z; z++)
+            {
+                if (IsValidColumnZBlocksWithoutX(dungeon, new Vector3Int(0, y, z)))
+                    dungeon[0, y, z].HasBottomLeftColumn = true;
+            }
+            for (int y = 0; y < dungeon.Size.y; y++)
+            {
+                if (dungeon[0, y, 0].IsLocked) 
+                    dungeon[0, y, 0].HasBottomLeftColumn = true;
+            }
+        }
+
+        private static bool IsValidColumnBetween4Blocks(Dungeon dungeon, Vector3Int position)
+        {
+            return (dungeon[position].IsLocked ||
+                    dungeon[position + back].IsLocked ||
+                    dungeon[position + left].IsLocked ||
+                    dungeon[position + BackLeft].IsLocked) 
+                   &&
+                   !(dungeon[position].IsLocked && 
+                     dungeon[position + back].IsLocked && 
+                     dungeon[position + left].IsLocked &&
+                     dungeon[position + BackLeft].IsLocked);
+        }
+
+        private static bool IsValidColumnXBlocksWithoutZ(Dungeon dungeon, Vector3Int position)
+        {
+            return dungeon[position].IsLocked ||
+                   dungeon[position + left].IsLocked;
+        }
+
+        private static bool IsValidColumnZBlocksWithoutX(Dungeon dungeon, Vector3Int position)
+        {
+            return dungeon[position].IsLocked ||
+                   dungeon[position + back].IsLocked;
         }
 
         public static void CarvePath(Dungeon dungeon, Room room, Vector3Int start)
@@ -290,118 +302,6 @@ namespace Generator
                     dungeon[end].HasRoof = false;
                     break;
             }
-        }
-
-        public static void BuildStoneCornersByWalls(Dungeon dungeon)
-        {
-            throw new System.NotImplementedException();
-        }
-        public static void ReBuildColumnsByWalls(Dungeon dungeon)
-        {
-            for (int y = 0; y < dungeon.Size.y; y++)
-            for (int x = 1; x <= dungeon.Size.x; x++)
-            for (int z = 1; z <= dungeon.Size.z; z++)
-            {
-                dungeon[x, y, z].HasBottomLeftColumn = 
-                    IsValidColumnBetween4Walls(dungeon, new Vector3Int(x, y, z));
-            }
-            
-            for (int y = 0; y < dungeon.Size.y; y++)
-            for (int x = 1; x < dungeon.Size.x; x++)
-            {
-                dungeon[x, y, 0].HasBottomLeftColumn = 
-                    IsValidColumnXWallsWithoutZ(dungeon, new Vector3Int(x, y, 0));
-            }
-            for (int y = 0; y < dungeon.Size.y; y++)
-            for (int z = 1; z < dungeon.Size.z; z++)
-            {
-                dungeon[0, y, z].HasBottomLeftColumn = 
-                    IsValidColumnZWallsWithoutX(dungeon, new Vector3Int(0, y, z));
-            }
-            for (int y = 0; y < dungeon.Size.y; y++)
-            {
-                dungeon[0, y, 0].HasBottomLeftColumn = 
-                    IsValidColumn(dungeon, new Vector3Int(0, y, 0));
-            }
-        }
-
-        private static bool IsValidColumnBetween4Walls(Dungeon dungeon, Vector3Int pos)
-        {
-            return dungeon[pos].HasLeftWall || dungeon[pos].HasBottomWall ||
-                   dungeon[pos + back].HasLeftWall || dungeon[pos + back].HasTopWall ||
-                   dungeon[pos + left].HasRightWall || dungeon[pos + left].HasBottomWall || 
-                   dungeon[pos + BackLeft].HasRightWall || dungeon[pos + BackLeft].HasTopWall;
-        }
-
-        private static bool IsValidColumnXWallsWithoutZ(Dungeon dungeon, Vector3Int pos)
-        {
-            return dungeon[pos].HasLeftWall || dungeon[pos].HasBottomWall ||
-                   dungeon[pos + left].HasRightWall || dungeon[pos + left].HasBottomWall;
-        }
-
-        private static bool IsValidColumnZWallsWithoutX(Dungeon dungeon, Vector3Int pos)
-        {
-            return dungeon[pos].HasLeftWall || dungeon[pos].HasBottomWall ||
-                   dungeon[pos + back].HasLeftWall || dungeon[pos + back].HasTopWall;
-        }
-
-        private static bool IsValidColumn(Dungeon dungeon, Vector3Int pos)
-        {
-            return dungeon[pos].HasLeftWall || dungeon[pos].HasBottomWall;
-        }
-
-        public static void BuildColumnsByBlockLock(Dungeon dungeon)
-        {
-            for (int y = 0; y < dungeon.Size.y; y++)
-            for (int x = 1; x <= dungeon.Size.x; x++)
-            for (int z = 1; z <= dungeon.Size.z; z++)
-            {
-                if (IsValidColumnBetween4Blocks(dungeon, new Vector3Int(x, y, z)))
-                    dungeon[x, y, z].HasBottomLeftColumn = true;
-            }
-            
-            for (int y = 0; y < dungeon.Size.y; y++)
-            for (int x = 1; x < dungeon.Size.x; x++)
-            {
-                if (IsValidColumnXBlocksWithoutZ(dungeon, new Vector3Int(x, y, 0)))
-                    dungeon[x, y, 0].HasBottomLeftColumn = true;
-            }
-            for (int y = 0; y < dungeon.Size.y; y++)
-            for (int z = 1; z < dungeon.Size.z; z++)
-            {
-                if (IsValidColumnZBlocksWithoutX(dungeon, new Vector3Int(0, y, z)))
-                    dungeon[0, y, z].HasBottomLeftColumn = true;
-            }
-            for (int y = 0; y < dungeon.Size.y; y++)
-            {
-                if (dungeon[0, y, 0].IsLocked) 
-                    dungeon[0, y, 0].HasBottomLeftColumn = true;
-            }
-        }
-
-        private static bool IsValidColumnBetween4Blocks(Dungeon dungeon, Vector3Int position)
-        {
-            return (dungeon[position].IsLocked ||
-                    dungeon[position + back].IsLocked ||
-                    dungeon[position + left].IsLocked ||
-                    dungeon[position + BackLeft].IsLocked) 
-                   &&
-                   !(dungeon[position].IsLocked && 
-                     dungeon[position + back].IsLocked && 
-                     dungeon[position + left].IsLocked &&
-                     dungeon[position + BackLeft].IsLocked);
-        }
-
-        private static bool IsValidColumnXBlocksWithoutZ(Dungeon dungeon, Vector3Int position)
-        {
-            return dungeon[position].IsLocked ||
-                   dungeon[position + left].IsLocked;
-        }
-
-        private static bool IsValidColumnZBlocksWithoutX(Dungeon dungeon, Vector3Int position)
-        {
-            return dungeon[position].IsLocked ||
-                   dungeon[position + back].IsLocked;
         }
     }
 }
