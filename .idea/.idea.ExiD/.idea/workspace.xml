@@ -5,17 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3969afc7-6043-4952-bb88-eb38dbe71859" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Axes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Axes.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ExiD/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ExiD/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/ScriptableObjects/EnvironmentScriptableObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/ScriptableObjects/EnvironmentScriptableObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Block.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Block.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/BlockBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/BlockBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Dungeon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Dungeon.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/PathGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/PathGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StairsStraightMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StairsStraightMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generator/Visualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generator/Visualizer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tests/EditMode/BlockTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tests/EditMode/BlockTests.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,11 +43,8 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/Axes.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/Documents/Unity/Cloud/ExiD/Assets/Scripts/Generator/Block.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Documents/Unity/Cloud/ExiD/Assets/Scripts/Generator/Block.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Documents/Unity/Cloud/ExiD/Assets/Scripts/Generator/Axes.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/Block.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/Documents/Unity/Cloud/ExiD/Assets/Scripts/Generator/BlockBuilder.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Documents/Unity/Cloud/ExiD/Assets/Scripts/Generator/BlockBuilder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Documents/Unity/Cloud/ExiD/Assets/Scripts/Generator/BlockBuilder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/Dungeon.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/GraphAlgorithm/RoomGenerator.cs" root0="FORCE_HIGHLIGHTING" />
@@ -66,11 +55,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/MatrixHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/NodeConnector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/PathFinder.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/Documents/Unity/Cloud/ExiD/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/PathGenerator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/PathGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/AStarAlgorithm/VoxelGridVertex.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/PathFinders/Movements/StairsLShapedMovement.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/Documents/Unity/Cloud/ExiD/Assets/Scripts/Generator/PathFinders/Movements/StairsStraightMovement.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/PathTree.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/RandomWalkAreaGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/RandomWalkAreaGeneratorBlock3d.cs" root0="FORCE_HIGHLIGHTING" />
@@ -84,7 +71,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/SubRoom.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/TreeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generator/Visualizer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/Documents/Unity/Cloud/ExiD/Assets/Tests/EditMode/BlockTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextInfoDebugTool.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@8017b507cc74/Unity.Mathematics/Unity.Mathematics.asmdef" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@8017b507cc74/Unity.Mathematics/math.cs" root0="SKIP_HIGHLIGHTING" />
@@ -223,7 +209,7 @@
       <workItem from="1747240613014" duration="41919000" />
       <workItem from="1747328284632" duration="8748000" />
       <workItem from="1747345975489" duration="20071000" />
-      <workItem from="1747410932637" duration="5015000" />
+      <workItem from="1747410932637" duration="18390000" />
     </task>
     <task id="LOCAL-00001" summary="Refactor RoomGenerator.cs VolumeProps.cs AreaProps.cs LineProps.cs">
       <option name="closed" value="true" />
@@ -257,7 +243,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747327338190</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Refactor Block/Builder; add Axes and Stone Corner tile painting&#10;&#10;- Replaced SetWall with SetBorder in Block for better abstraction and extended support for edge and corner cases.&#10;- Introduced Axes class in BlockBuilder to reduce duplication and clearly define plane (ab) vs. single (c) axis.&#10;- Added Stone Corner tile painting support in the Visualizer class.">
+      <option name="closed" value="true" />
+      <created>1747416256367</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1747416256367</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Refactor Axes class to remove unnecessary subclasses&#10;&#10;Replaced Axes abstract class and its subclasses with a single class and factory methods for axis creation. This simplifies the code structure and improves maintainability by consolidating the logic into one place while retaining functionality.">
+      <option name="closed" value="true" />
+      <created>1747426853543</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1747426853543</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,7 +307,9 @@
     <MESSAGE value="Add axis-based wall building functionality and Position struct&#10;&#10;Introduced axis-based wall building logic in BlockBuilder.cs, enabling dynamic border creation based on locking status along X, Y, and Z axes. &#10;Added a new Position struct in Generator.Library to improve 3D position handling and comparisons, enhancing code structure and readability." />
     <MESSAGE value="Add axis-based wall-building functionality in BlockBuilder&#10;&#10;Introduced axis-specific classes (XAxis, YAxis, ZAxis) to streamline dynamic wall creation based on locking status. This refactor enhances maintainability and reduces code duplication by replacing switch-case logic with polymorphism. Simplified axis traversal through dedicated methods for cleaner and more efficient code." />
     <MESSAGE value="Refactor dungeon generation and visualization logic&#10;&#10;Replaced the use of `SetWall` with `SetBorder` for better abstraction and extended border handling to support additional corner and edge cases.&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor dungeon generation and visualization logic&#10;&#10;Replaced the use of `SetWall` with `SetBorder` for better abstraction and extended border handling to support additional corner and edge cases.&#10;" />
+    <MESSAGE value="Refactor Block/Builder; add Axes and Stone Corner tile painting&#10;&#10;- Replaced SetWall with SetBorder in Block for better abstraction and extended support for edge and corner cases.&#10;- Introduced Axes class in BlockBuilder to reduce duplication and clearly define plane (ab) vs. single (c) axis.&#10;- Added Stone Corner tile painting support in the Visualizer class." />
+    <MESSAGE value="Refactor Axes class to remove unnecessary subclasses&#10;&#10;Replaced Axes abstract class and its subclasses with a single class and factory methods for axis creation. This simplifies the code structure and improves maintainability by consolidating the logic into one place while retaining functionality." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor Axes class to remove unnecessary subclasses&#10;&#10;Replaced Axes abstract class and its subclasses with a single class and factory methods for axis creation. This simplifies the code structure and improves maintainability by consolidating the logic into one place while retaining functionality." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

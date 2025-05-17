@@ -24,7 +24,7 @@ namespace Generator.PathFinders.AStarAlgorithm
             }
             
             BlockBuilder.BuildBordersBasedOnLockLevelSeparately(dungeon);
-            BlockBuilder.ReBuildEdgesByWalls(dungeon);
+            BlockBuilder.RebuildEdgesByFaces(dungeon);
         }
 
         private Edge<Vertex> GenerateBetweenRooms(VoxelGridVertex vertices, Dungeon dungeon,

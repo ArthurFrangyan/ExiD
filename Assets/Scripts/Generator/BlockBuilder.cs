@@ -80,52 +80,99 @@ namespace Generator
             }
         }
 
-        public static void ReBuildEdgesByWalls(Dungeon dungeon)
+        public static void RebuildEdgesByFaces(Dungeon dungeon)
         {
-            ReBuildEdgesByWalls(dungeon, Axes.Y);
-            // TODO stoneCorners
+            RebuildEdgesByFaces(dungeon, Axes.Y);
+            RebuildEdgesForTwoFaceCorner(dungeon, Axes.X);
+            RebuildEdgesForTwoFaceCorner(dungeon, Axes.Z);
         }
 
 
-        private static void ReBuildEdgesByWalls(Dungeon dungeon, Axes axes)
+        private static void RebuildEdgesByFaces(Dungeon dungeon, Axes axes)
         {
             var edge = -axes.AVec - axes.BVec;
-            foreach (var pos in axes.ABC(axes.AVec + axes.BVec, dungeon.Size + axes.AVec + axes.BVec)) 
-                dungeon[pos].SetBorder(edge, IsValidEdgeBetween4Faces(dungeon, axes, pos));
             
-            foreach (var pos in axes.BC(axes.BVec, dungeon.Size + axes.BVec))
-                dungeon[pos].SetBorder(edge, IsValidEdgeBWithoutA(dungeon, axes, pos));
+            foreach (var pos in axes.ABC(axes.AVec + axes.BVec, dungeon.Size + axes.AVec + axes.BVec)) 
+                dungeon[pos].SetBorder(edge, IsValidEdge4Faces(pos));
             
             foreach (var pos in axes.AC(axes.AVec, dungeon.Size + axes.AVec))
-                dungeon[pos].SetBorder(edge, IsValidEdgeAWithoutB(dungeon, axes, pos));
+                dungeon[pos].SetBorder(edge, IsValidEdgeAxisA(pos));
+
+            foreach (var pos in axes.BC(axes.BVec, dungeon.Size + axes.BVec))
+                dungeon[pos].SetBorder(edge, IsValidEdgeAxisB(pos));
             
             foreach (var pos in axes.C(zero, dungeon.Size))
-                dungeon[pos].SetBorder(edge, IsValidEdge(dungeon, axes, pos));
-        }
+                dungeon[pos].SetBorder(edge, IsValidEdgeSingle(pos));
+            
 
-        private static bool IsValidEdgeBetween4Faces(Dungeon dungeon, Axes axes, Vector3Int pos)
-        {
-            return dungeon[pos].GetBorder(-axes.AVec) || dungeon[pos].GetBorder(-axes.BVec) ||
-                   dungeon[pos - axes.BVec].GetBorder(-axes.AVec) || dungeon[pos - axes.BVec].GetBorder(axes.BVec) ||
-                   dungeon[pos - axes.AVec].GetBorder(axes.AVec) || dungeon[pos - axes.AVec].GetBorder(-axes.BVec) || 
-                   dungeon[pos - axes.AVec - axes.BVec].GetBorder(axes.AVec) || dungeon[pos - axes.BVec - axes.AVec].GetBorder(axes.BVec);
-        }
+            bool IsValidEdge4Faces(Vector3Int pos) =>
+                dungeon[pos].GetBorder(-axes.AVec) || dungeon[pos].GetBorder(-axes.BVec) ||
+                dungeon[pos - axes.BVec].GetBorder(-axes.AVec) || dungeon[pos - axes.BVec].GetBorder(axes.BVec) ||
+                dungeon[pos - axes.AVec].GetBorder(axes.AVec) || dungeon[pos - axes.AVec].GetBorder(-axes.BVec) || 
+                dungeon[pos - axes.AVec - axes.BVec].GetBorder(axes.AVec) || dungeon[pos - axes.BVec - axes.AVec].GetBorder(axes.BVec);
 
-        private static bool IsValidEdgeAWithoutB(Dungeon dungeon, Axes axes, Vector3Int pos)
-        {
-            return dungeon[pos].GetBorder(-axes.AVec) || dungeon[pos].GetBorder(-axes.BVec) ||
-                   dungeon[pos - axes.AVec].GetBorder(axes.AVec) || dungeon[pos - axes.AVec].GetBorder(-axes.BVec);
-        }
+            bool IsValidEdgeAxisA(Vector3Int pos) =>
+                dungeon[pos].GetBorder(-axes.AVec) || dungeon[pos].GetBorder(-axes.BVec) ||
+                dungeon[pos - axes.AVec].GetBorder(axes.AVec) || dungeon[pos - axes.AVec].GetBorder(-axes.BVec);
 
-        private static bool IsValidEdgeBWithoutA(Dungeon dungeon, Axes axes, Vector3Int pos)
-        {
-            return dungeon[pos].GetBorder(-axes.AVec) || dungeon[pos].GetBorder(-axes.BVec) ||
-                   dungeon[pos - axes.BVec].GetBorder(-axes.AVec) || dungeon[pos - axes.BVec].GetBorder(axes.BVec);
-        }
+            bool IsValidEdgeAxisB(Vector3Int pos) =>
+                dungeon[pos].GetBorder(-axes.AVec) || dungeon[pos].GetBorder(-axes.BVec) ||
+                dungeon[pos - axes.BVec].GetBorder(-axes.AVec) || dungeon[pos - axes.BVec].GetBorder(axes.BVec);
 
-        private static bool IsValidEdge(Dungeon dungeon, Axes axes, Vector3Int pos)
+            bool IsValidEdgeSingle(Vector3Int pos) => 
+                dungeon[pos].GetBorder(-axes.AVec) || dungeon[pos].GetBorder(-axes.BVec);
+        }
+        private static void RebuildEdgesForTwoFaceCorner(Dungeon dungeon, Axes axes)
         {
-            return dungeon[pos].GetBorder(-axes.AVec) || dungeon[pos].GetBorder(-axes.BVec);
+            var edge = -axes.AVec - axes.BVec;
+            
+            foreach (var pos in axes.ABC(axes.AVec + axes.BVec, dungeon.Size + axes.AVec + axes.BVec)) 
+                dungeon[pos].SetBorder(edge, IsValidEdge4Faces(pos));
+            
+            foreach (var pos in axes.AC(axes.AVec, dungeon.Size + axes.AVec))
+                dungeon[pos].SetBorder(edge, IsValidEdgeForAxis(pos, axes.AVec, axes.BVec));
+
+            foreach (var pos in axes.BC(axes.BVec, dungeon.Size + axes.BVec))
+                dungeon[pos].SetBorder(edge, IsValidEdgeForAxis(pos, axes.BVec, axes.AVec));
+            
+            foreach (var pos in axes.C(zero, dungeon.Size))
+                dungeon[pos].SetBorder(edge, IsValidEdgeSingle(pos));
+            
+
+            bool IsValidEdge4Faces(Vector3Int pos)
+            {
+                if (FormsLine(pos, 
+                        -axes.AVec, -axes.BVec) ||
+                    FormsLine(pos - axes.AVec, 
+                        -axes.BVec, axes.AVec) ||
+                    FormsLine(pos - axes.BVec-axes.AVec, 
+                        axes.AVec, axes.BVec) ||
+                    FormsLine(pos - axes.BVec, 
+                        axes.BVec, -axes.AVec))
+                    return false;
+
+                return dungeon[pos].GetBorder(-axes.AVec) || dungeon[pos].GetBorder(-axes.BVec) ||
+                       dungeon[pos - axes.BVec].GetBorder(-axes.AVec) ||
+                       dungeon[pos - axes.BVec].GetBorder(axes.BVec) ||
+                       dungeon[pos - axes.AVec].GetBorder(axes.AVec) ||
+                       dungeon[pos - axes.AVec].GetBorder(-axes.BVec) ||
+                       dungeon[pos - axes.AVec - axes.BVec].GetBorder(axes.AVec) ||
+                       dungeon[pos - axes.BVec - axes.AVec].GetBorder(axes.BVec);
+
+                bool FormsLine(Vector3Int pos, Vector3Int aVec, Vector3Int bVec) =>
+                    dungeon[pos].GetBorder(aVec) && dungeon[pos + bVec].GetBorder(aVec);
+            }
+
+            bool IsValidEdgeForAxis(Vector3Int pos, Vector3Int aVec, Vector3Int bVec)
+            {
+                if(dungeon[pos].GetBorder(-bVec) && dungeon[pos - aVec].GetBorder(-bVec))
+                    return false;
+                return dungeon[pos].GetBorder(-aVec) || dungeon[pos].GetBorder(-bVec) ||
+                       dungeon[pos - aVec].GetBorder(aVec) || dungeon[pos - aVec].GetBorder(-bVec);
+            }
+
+            bool IsValidEdgeSingle(Vector3Int pos) => 
+                dungeon[pos].GetBorder(-axes.AVec) || dungeon[pos].GetBorder(-axes.BVec);
         }
 
         public static void ReBuildColumnsByWalls(Dungeon dungeon)
