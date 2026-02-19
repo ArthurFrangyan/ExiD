@@ -1,6 +1,6 @@
-![Dungeon Demo](docs/images/dungeon-demo.png)
-
 # Procedural 3D Dungeon Generator for Unity
+
+![Dungeon Demo](docs/images/dungeon-demo.png)
 
 This is a powerful and flexible procedural dungeon generator for Unity. It allows you to create complex and varied 3D dungeons with just a few clicks. The generator is highly customizable, allowing you to control the size, shape, and complexity of the generated dungeons.
 
